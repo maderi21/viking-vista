@@ -3,7 +3,7 @@ defineProps({});
 </script>
 
 <template>
-  <div class="font-bold">Hello</div>
+  <div class="font-bold">this is gift page</div>
 </template>
 
 <style></style>

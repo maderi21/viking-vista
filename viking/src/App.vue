@@ -1,6 +1,6 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
+import NavBar from "./components/NavBar.vue";
+import Accommodation from "./views/Accommodation.vue";
 </script>
 
 <template>
@@ -9,8 +9,8 @@ import HelloWorld from "./components/HelloWorld.vue";
       <nav></nav>
     </div>
   </header>
-
-  <RouterView />
+  <NavBar />
+  <Accommodation />
 </template>
 
 <style></style>
