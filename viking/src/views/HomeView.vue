@@ -10,7 +10,7 @@ import Reservations from "./Reservations.vue";
 <template>
   <main>
     <NavBar />
-    <section>
+    <!-- <section>
       <Hero />
     </section>
     <section>
@@ -24,6 +24,6 @@ import Reservations from "./Reservations.vue";
     </section>
     <section>
       <Reservations />
-    </section>
+    </section> -->
   </main>
 </template>
