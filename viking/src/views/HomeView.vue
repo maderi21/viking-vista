@@ -1,5 +1,4 @@
 <script setup>
-import NavBar from "@/components/NavBar.vue";
 import Accommodation from "./Accommodation.vue";
 import Hero from "../components/Hero.vue";
 import Experience from "./Experience.vue";
@@ -9,7 +8,6 @@ import Reservations from "./Reservations.vue";
 
 <template>
   <main>
-    <NavBar />
     <!-- <section>
       <Hero />
     </section>
