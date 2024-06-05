@@ -39,43 +39,46 @@ import { RouterLink } from "vue-router";
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul
-            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white"
+            class="font-medium flex flex-col items-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white"
           >
             <li>
               <RouterLink
                 to="/accommodation"
                 class="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0"
-                aria-current="page"
-                >Accommodation</RouterLink
+                >ACCOMODATION</RouterLink
               >
             </li>
             <li>
               <RouterLink
                 to="/experience"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-yellow-600 md:border-0 md:p-0"
-                >Experience</RouterLink
+                class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-yellow-600 md:border-0 md:p-0"
+                >EXPERIENCE</RouterLink
               >
             </li>
             <li>
               <RouterLink
                 to="/contact"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-yellow-600 md:p-0"
-                >Contact</RouterLink
+                class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-yellow-600 md:p-0"
+                >CONTACT</RouterLink
               >
             </li>
             <li>
               <RouterLink
                 to="/gift"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-yellow-600 md:p-0"
-                >Gift</RouterLink
+                class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-yellow-600 md:p-0"
+                >GIFT</RouterLink
               >
             </li>
             <li>
-              <RouterLink
-                to="/reservations"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-yellow-600 md:p-0"
-                >Reservations</RouterLink
+              <button
+                class="rounded-3xl bg-yellow-400 border border-r-100 px-2 py-3"
               >
+                <RouterLink
+                  to="/reservations"
+                  class="block text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-yellow-600 md:p-0"
+                  >RESERVATIONS</RouterLink
+                >
+              </button>
             </li>
           </ul>
         </div>
