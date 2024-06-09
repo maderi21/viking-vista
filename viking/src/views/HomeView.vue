@@ -8,10 +8,10 @@ import Reservations from "./Reservations.vue";
 
 <template>
   <main>
-    <!-- <section>
+    <section>
       <Hero />
     </section>
-    <section>
+    <!-- <section>
       <Accommodation />
     </section>
     <section>
