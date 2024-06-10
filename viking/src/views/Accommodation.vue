@@ -3,7 +3,5 @@ defineProps({});
 </script>
 
 <template>
-  <div class="font-bold">this is accommodation page</div>
+  <div class="bg-accommodation bg-cover bg-center h-[1340px]"></div>
 </template>
-
-<style></style>

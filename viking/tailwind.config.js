@@ -14,6 +14,10 @@ export default {
       },
       backgroundImage: {
         hero: "url('./src/images/1.jpg')",
+        accommodation: "url('./src/images/2.jpg')",
+        experience: "url('./src/images/3.jpg')",
+        contact: "url('./src/images/4.jpg')",
+        gift: "url('./src/images/5.jpg')",
       },
     },
   },
