@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        cabin: ['"Cabin"', "sans-serif"],
+      },
       colors: {
         primary: {
           light: "#EFC25D",

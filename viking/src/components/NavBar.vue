@@ -9,8 +9,8 @@ import { RouterLink } from "vue-router";
         class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
       >
         <a class="flex items-center space-x-3 rtl:space-x-reverse">
-          <span class="self-center text-2xl font-semibold whitespace-nowrap"
-            >Viking Vista</span
+          <span class="self-center text-2xl font-bold whitespace-nowrap"
+            >VIKING VISTA</span
           >
         </a>
         <button
