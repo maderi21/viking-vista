@@ -12,6 +12,9 @@ export default {
         info: "242505",
         top: "E5F1F1",
       },
+      backgroundImage: {
+        hero: "url('./src/images/1.jpg')",
+      },
     },
   },
   plugins: [],

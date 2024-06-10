@@ -11,7 +11,7 @@ import Reservations from "./Reservations.vue";
     <section>
       <Hero />
     </section>
-    <!-- <section>
+    <section>
       <Accommodation />
     </section>
     <section>
@@ -22,6 +22,6 @@ import Reservations from "./Reservations.vue";
     </section>
     <section>
       <Reservations />
-    </section> -->
+    </section>
   </main>
 </template>

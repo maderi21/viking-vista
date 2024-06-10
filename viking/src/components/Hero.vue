@@ -1,7 +1,9 @@
 <template>
-  <div class="bg-gray-300 w-full h-96 flex justify-center items-center">
-    <div class="flex items-center flex-col">
-      <h3>Your Adventure Begins Here</h3>
+  <div
+    class="bg-hero bg-cover bg-center h-[1340px] flex justify-center items-center"
+  >
+    <div class="text-white flex items-center flex-col">
+      <h3 class="">Your Adventure Begins Here</h3>
       <p>Discover relax from different angle</p>
     </div>
   </div>
