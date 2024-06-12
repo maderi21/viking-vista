@@ -16,7 +16,7 @@ export default {
         top: "E5F1F1",
       },
       backgroundImage: {
-        hero: "url('./src/images/1.jpg')",
+        hero: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./src/images/1.jpg')",
         accommodation: "url('./src/images/2.jpg')",
         experience: "url('./src/images/3.jpg')",
         contact: "url('./src/images/4.jpg')",
