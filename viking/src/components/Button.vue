@@ -34,7 +34,7 @@ const btnStyleClass = computed(() => {
 </script>
 
 <template>
-  <span :class="`rounded ${btnSizeClass.value} ${btnStyleClass.value}`">
+  <button :class="`rounded-3xl ${btnSizeClass} ${btnStyleClass}`">
     <slot></slot>
-  </span>
+  </button>
 </template>
