@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from "vue-router";
+import Icon from "./icons/Icon.vue";
 </script>
 
 <template>
@@ -54,7 +55,9 @@ import { RouterLink } from "vue-router";
               <RouterLink
                 to="/experience"
                 class="block py-2 px-3 mx-3 rounded hover:text-primary-dark hover:shadow-md md:border-0 md:p-0"
-                >EXPERIENCE</RouterLink
+              >
+                <Icon name="coffee"> </Icon>
+                EXPERIENCE</RouterLink
               >
             </li>
             <li>
