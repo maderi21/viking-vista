@@ -1,5 +1,6 @@
 <script setup>
 import Button from "./Button.vue";
+import Icon from "./icons/Icon.vue";
 </script>
 
 <template>
@@ -7,21 +8,27 @@ import Button from "./Button.vue";
     class="bg-hero text-white bg-cover bg-center h-[1340px] flex flex-col items-center"
   >
     <div class="flex items-center flex-col mt-64">
-      <h1 class="text-3xl">Your Adventure Begins Here</h1>
-      <p class="text-xl">Discover relaxation from a different angle</p>
+      <h1 class="text-6xl mb-5">Your Adventure</h1>
+      <h1 class="text-6xl">Begins In Our Remote Cabin</h1>
+      <Icon class="text-4xl mt-16" name="chevron-down"></Icon>
     </div>
 
-    <div class="flex flex-col mt-64 max-w-4xl p-10 items-center justify-center">
-      <p class="text-center">
-        Escape to nature's tranquility. Rent a cozy cabin today and discover
-        relaxation like never before. Your adventure awaits! Whether you're
-        seeking a peaceful retreat or an exciting outdoor adventure, our cabins
-        offer the perfect escape. Enjoy breathtaking views, serene surroundings,
-        and all the comforts of home!
-      </p>
-      <button class="mt-10">
-        <Button>Reserve a spot</Button>
-      </button>
+    <div
+      class="flex flex-col-3 space-x-5 mt-64 max-w-4xl p-10 items-center justify-center"
+    >
+      <div>
+        <h1>Unwind</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, aliquid.
+        </p>
+      </div>
+      <div>
+        <h1>Unplug</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, aliquid.
+        </p>
+      </div>
+      <div>Begins In Our Remote Cabin</div>
     </div>
   </div>
 </template>
