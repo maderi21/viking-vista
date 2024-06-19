@@ -1,6 +1,14 @@
 <script setup>
-import Button from "./Button.vue";
 import Icon from "./icons/Icon.vue";
+
+const scrollAmount = 500;
+
+const moveDown = () => {
+  window.scrollBy({
+    top: scrollAmount,
+    behavior: "smooth",
+  });
+};
 </script>
 
 <template>
@@ -10,7 +18,9 @@ import Icon from "./icons/Icon.vue";
     <div class="flex items-center flex-col mt-64">
       <h1 class="text-6xl mb-5">Your Adventure</h1>
       <h1 class="text-6xl">Begins In Our Remote Cabin</h1>
-      <Icon class="text-4xl mt-16" name="chevron-down"></Icon>
+      <button @click="moveDown">
+        <Icon class="text-4xl mt-16" name="chevron-down"></Icon>
+      </button>
     </div>
 
     <div
@@ -28,7 +38,12 @@ import Icon from "./icons/Icon.vue";
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, aliquid.
         </p>
       </div>
-      <div>Begins In Our Remote Cabin</div>
+      <div>
+        <h1>Relax</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, aliquid.
+        </p>
+      </div>
     </div>
   </div>
 </template>
