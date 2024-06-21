@@ -6,10 +6,6 @@ const props = defineProps({
     type: String,
     default: "medium",
   },
-  BtnStyle: {
-    type: String,
-    default: "filled",
-  },
 });
 
 const btnSizeClass = computed(() => {
@@ -23,18 +19,10 @@ const btnSizeClass = computed(() => {
       return "px-4 py-2 text-base";
   }
 });
-
-const btnStyleClass = computed(() => {
-  if (props.BtnStyle === "outline") {
-    return "border border-primary-dark text-primary-dark bg-transparent";
-  } else {
-    return "bg-primary-dark text-white";
-  }
-});
 </script>
 
 <template>
-  <button :class="`rounded-3xl ${btnSizeClass} ${btnStyleClass}`">
+  <button :class="`rounded-3xl  ${btnSizeClass}`">
     <slot></slot>
   </button>
 </template>

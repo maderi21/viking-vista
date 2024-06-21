@@ -1,5 +1,6 @@
 <script setup>
 import Icon from "./icons/Icon.vue";
+import Button from "./Button.vue";
 
 const scrollAmount = 500;
 
@@ -13,7 +14,7 @@ const moveDown = () => {
 
 <template>
   <div
-    class="bg-hero text-white bg-cover bg-center h-[1340px] flex flex-col items-center"
+    class="bg-hero text-white bg-cover bg-center h-[1340px] flex flex-col items-center rounded-b-8"
   >
     <div class="flex items-center flex-col mt-64">
       <h1 class="text-6xl mb-5">Your Adventure</h1>
@@ -24,32 +25,37 @@ const moveDown = () => {
     </div>
 
     <div
-      class="flex flex-col-3 space-x-10 pt-64 mt-40 max-w-4xl items-center justify-center"
+      class="flex flex-col-3 space-x-10 mt-72 max-w-4xl items-center justify-center"
     >
-      <div>
-        <h1 class="text-3xl">Unbend</h1>
-        <p>
+      <div class="mx-3">
+        <h1 class="text-3xl underline underline-offset-8">Unbend</h1>
+        <p class="mt-4">
           Unwind in our cozy rental cabin. Escape the hustle and bustle, embrace
           nature's tranquility, and enjoy ultimate relaxation in serene
           surroundings.
         </p>
       </div>
-      <div>
-        <h1 class="text-3xl">Unplug</h1>
-        <p>
+      <div class="mx-3">
+        <h1 class="text-3xl underline underline-offset-8">Unplug</h1>
+        <p class="mt-4">
           Unplug in our serene rental cabin. Disconnect from the chaos, immerse
           yourself in nature, and find peace and relaxation in a tranquil
           retreat.
         </p>
       </div>
-      <div>
-        <h1 class="text-3xl">Relax</h1>
-        <p>
+      <div class="mx-3">
+        <h1 class="text-3xl underline underline-offset-8">Relax</h1>
+        <p class="mt-4">
           Relax in our tranquil rental cabin. Leave the stress behind, soak in
           nature's beauty, and enjoy unparalleled comfort and serenity in your
           cozy retreat.
         </p>
       </div>
     </div>
+    <button class="mt-24">
+      <Button class="border border-white px-10" BtnSize="large"
+        >Reserve Now</Button
+      >
+    </button>
   </div>
 </template>
