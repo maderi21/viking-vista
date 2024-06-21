@@ -24,24 +24,30 @@ const moveDown = () => {
     </div>
 
     <div
-      class="flex flex-col-3 space-x-5 mt-64 max-w-4xl p-10 items-center justify-center"
+      class="flex flex-col-3 space-x-10 pt-64 mt-40 max-w-4xl items-center justify-center"
     >
       <div>
-        <h1>Unwind</h1>
+        <h1 class="text-3xl">Unbend</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, aliquid.
+          Unwind in our cozy rental cabin. Escape the hustle and bustle, embrace
+          nature's tranquility, and enjoy ultimate relaxation in serene
+          surroundings.
         </p>
       </div>
       <div>
-        <h1>Unplug</h1>
+        <h1 class="text-3xl">Unplug</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, aliquid.
+          Unplug in our serene rental cabin. Disconnect from the chaos, immerse
+          yourself in nature, and find peace and relaxation in a tranquil
+          retreat.
         </p>
       </div>
       <div>
-        <h1>Relax</h1>
+        <h1 class="text-3xl">Relax</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, aliquid.
+          Relax in our tranquil rental cabin. Leave the stress behind, soak in
+          nature's beauty, and enjoy unparalleled comfort and serenity in your
+          cozy retreat.
         </p>
       </div>
     </div>
