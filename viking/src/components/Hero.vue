@@ -19,7 +19,7 @@ const moveDown = () => {
       <h1 class="text-6xl mb-5">Your Adventure</h1>
       <h1 class="text-6xl">Begins In Our Remote Cabin</h1>
       <button @click="moveDown">
-        <Icon class="text-4xl mt-16" name="chevron-down"></Icon>
+        <Icon class="text-4xl mt-16 animate-pulse" name="chevron-down"></Icon>
       </button>
     </div>
 
