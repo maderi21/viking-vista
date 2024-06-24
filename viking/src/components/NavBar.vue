@@ -47,7 +47,8 @@ import Button from "./Button.vue";
               <RouterLink
                 to="/accommodation"
                 class="hover:underline hover:underline-offset-8 block hover:text-primary-dark py-2 px-3 rounded md:bg-transparent md:p-0"
-                >ACCOMODATION</RouterLink
+              >
+                <Icon name="house" class="mr-3"> </Icon>ACCOMODATION</RouterLink
               >
             </li>
             <li>
@@ -55,7 +56,7 @@ import Button from "./Button.vue";
                 to="/experience"
                 class="hover:underline hover:underline-offset-8 block py-2 px-3 mx-3 rounded hover:text-primary-dark hover:shadow-md md:border-0 md:p-0"
               >
-                <Icon name="coffee"> </Icon>
+                <Icon name="coffee" class="mr-3"> </Icon>
                 EXPERIENCE</RouterLink
               >
             </li>
@@ -63,6 +64,8 @@ import Button from "./Button.vue";
               <RouterLink
                 to="/contact"
                 class="hover:underline hover:underline-offset-8 block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
+              >
+                <Icon name="address-card" class="mr-3"> </Icon
                 >CONTACT</RouterLink
               >
             </li>
@@ -70,7 +73,8 @@ import Button from "./Button.vue";
               <RouterLink
                 to="/gift"
                 class="hover:underline hover:underline-offset-8 block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
-                >GIFT</RouterLink
+              >
+                <Icon name="gift" class="mr-3"> </Icon>GIFT</RouterLink
               >
             </li>
             <li>
