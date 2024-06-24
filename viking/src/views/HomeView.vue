@@ -15,13 +15,13 @@ import Reservations from "./Reservations.vue";
       <Accommodation />
     </section>
     <section>
-      <Experience />
+      <!-- <Experience /> -->
     </section>
     <section>
-      <Gift />
+      <!-- <Gift /> -->
     </section>
     <section>
-      <Reservations />
+      <!-- <Reservations /> -->
     </section>
   </main>
 </template>

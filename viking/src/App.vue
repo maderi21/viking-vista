@@ -4,8 +4,9 @@ import HomeView from "./views/HomeView.vue";
 </script>
 
 <template>
-  <NavBar />
-  <HomeView />
+  <div class="max-w-10-[1024px]">
+    <HomeView />
+  </div>
 </template>
 
 <style></style>

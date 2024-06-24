@@ -1,13 +1,12 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import Icon from "./icons/Icon.vue";
+import Button from "./Button.vue";
 </script>
 
 <template>
-  <div class="sticky top-0">
-    <nav
-      class="bg-primary-light border-gray-20 shadow-lg border border-blue-200"
-    >
+  <div class="w-full sticky top-0">
+    <nav class="bg-blend-hue backdrop-blur-md mt-10">
       <div
         class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
       >
@@ -42,19 +41,19 @@ import Icon from "./icons/Icon.vue";
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul
-            class="font-medium px-5 flex flex-col items-center p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white"
+            class="font-medium px-5 flex flex-col items-center p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0"
           >
             <li>
               <RouterLink
                 to="/accommodation"
-                class="block bg-primary-light py-2 px-3 rounded md:bg-transparent md:p-0"
+                class="hover:underline hover:underline-offset-8 block hover:text-primary-dark py-2 px-3 rounded md:bg-transparent md:p-0"
                 >ACCOMODATION</RouterLink
               >
             </li>
             <li>
               <RouterLink
                 to="/experience"
-                class="block py-2 px-3 mx-3 rounded hover:text-primary-dark hover:shadow-md md:border-0 md:p-0"
+                class="hover:underline hover:underline-offset-8 block py-2 px-3 mx-3 rounded hover:text-primary-dark hover:shadow-md md:border-0 md:p-0"
               >
                 <Icon name="coffee"> </Icon>
                 EXPERIENCE</RouterLink
@@ -63,19 +62,19 @@ import Icon from "./icons/Icon.vue";
             <li>
               <RouterLink
                 to="/contact"
-                class="block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
+                class="hover:underline hover:underline-offset-8 block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
                 >CONTACT</RouterLink
               >
             </li>
             <li>
               <RouterLink
                 to="/gift"
-                class="block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
+                class="hover:underline hover:underline-offset-8 block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
                 >GIFT</RouterLink
               >
             </li>
             <li>
-              <button
+              <Button
                 class="bg-primary rounded-3xl bg- border border-r-100 px-2 py-3"
               >
                 <RouterLink
@@ -83,7 +82,7 @@ import Icon from "./icons/Icon.vue";
                   class="block rounded md:border-0 hover:text-primary-dark md:p-0"
                   >RESERVATIONS</RouterLink
                 >
-              </button>
+              </Button>
             </li>
           </ul>
         </div>
