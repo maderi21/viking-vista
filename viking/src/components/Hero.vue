@@ -15,10 +15,10 @@ const moveDown = () => {
 
 <template>
   <div
-    class="bg-hero text-white bg-cover bg-center h-[1124px] flex flex-col items-center rounded-b-3xl"
+    class="bg-hero text-white bg-cover bg-center h-[1350px] flex flex-col items-center rounded-b-3xl"
   >
     <nav-bar></nav-bar>
-    <div class="flex items-center flex-col mt-64">
+    <div class="flex items-center flex-col mt-52">
       <h1 class="text-6xl mb-5">Your Adventure</h1>
       <h1 class="text-6xl">Begins In Our Remote Cabin</h1>
       <button @click="moveDown">
