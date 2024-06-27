@@ -1,5 +1,29 @@
 <script setup>
-defineProps({});
+import { ref } from "vue";
+
+const isModalOpen = ref(false);
+const selectedImage = ref("");
+
+function openModal(image) {
+  selectedImage.value = image;
+  isModalOpen.value = true;
+}
+
+function closeModal() {
+  isModalOpen.value = false;
+  selectedImage.value = "";
+}
+
+const images = [
+  new URL("../images/look1.jpg", import.meta.url).href,
+  new URL("../images/look2.jpg", import.meta.url).href,
+  new URL("../images/look3.jpg", import.meta.url).href,
+  new URL("../images/look4.jpg", import.meta.url).href,
+  new URL("../images/look5.jpg", import.meta.url).href,
+  new URL("../images/look6.jpg", import.meta.url).href,
+  new URL("../images/look7.jpg", import.meta.url).href,
+  new URL("../images/look8.jpg", import.meta.url).href,
+];
 </script>
 
 <template>
@@ -8,62 +32,32 @@ defineProps({});
       <h3 class="text-4xl mb-10">What Does it Look Like?</h3>
     </div>
     <div class="grid grid-cols-4 gap-4">
-      <div class="h-[450px] w-[350px]">
+      <div
+        v-for="image in images"
+        :key="image"
+        class="h-[450px] w-[350px]"
+        @click="openModal(image)"
+      >
         <img
-          src="../images/look1.jpg"
-          alt="look1"
+          :src="image"
+          alt="look"
           class="object-cover h-full w-full rounded-md shadow-md transform transition-transform duration-300 hover:scale-105"
         />
       </div>
-      <div class="h-[450px] w-[350px]">
-        <img
-          src="../images/look2.jpg"
-          alt="look2"
-          class="object-cover h-full w-full rounded-md shadow-md transform transition-transform duration-300 hover:scale-105"
-        />
-      </div>
-      <div class="h-[450px] w-[350px]">
-        <img
-          src="../images/look3.jpg"
-          alt="look3"
-          class="object-cover h-full w-full rounded-md shadow-md transform transition-transform duration-300 hover:scale-105"
-        />
-      </div>
-      <div class="h-[450px] w-[350px]">
-        <img
-          src="../images/look4.jpg"
-          alt="look4"
-          class="object-cover h-full w-full rounded-md shadow-md transform transition-transform duration-300 hover:scale-105"
-        />
-      </div>
-      <div class="h-[450px] w-[350px]">
-        <img
-          src="../images/look5.jpg"
-          alt="look5"
-          class="object-cover h-full w-full rounded-md shadow-md transform transition-transform duration-300 hover:scale-105"
-        />
-      </div>
-      <div class="h-[450px] w-[350px]">
-        <img
-          src="../images/look6.jpg"
-          alt="look6"
-          class="object-cover h-full w-full rounded-md shadow-md transform transition-transform duration-300 hover:scale-105"
-        />
-      </div>
-      <div class="h-[450px] w-[350px]">
-        <img
-          src="../images/look7.jpg"
-          alt="look7"
-          class="object-cover h-full w-full rounded-md shadow-md transform transition-transform duration-300 hover:scale-105"
-        />
-      </div>
-      <div class="h-[450px] w-[350px]">
-        <img
-          src="../images/look8.jpg"
-          alt="look8"
-          class="object-cover h-full w-full rounded-md shadow-md transform transition-transform duration-300 hover:scale-105"
-        />
-      </div>
+    </div>
+  </div>
+
+  <div
+    v-if="isModalOpen"
+    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+    @click.self="closeModal"
+  >
+    <div class="relative bg-white rounded-lg p-4 max-w-4xl mx-auto">
+      <img
+        :src="selectedImage"
+        alt="Selected"
+        class="max-w-[600px] max-h-[750px]"
+      />
     </div>
   </div>
 </template>
