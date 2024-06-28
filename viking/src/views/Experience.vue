@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import Button from "@/components/Button.vue";
 
 const isModalOpen = ref(false);
 const selectedImage = ref("");
@@ -45,6 +46,11 @@ const images = [
         />
       </div>
     </div>
+    <button class="mt-20">
+      <Button class="border border-primary-dark px-10" BtnSize="large"
+        >Reservations</Button
+      >
+    </button>
   </div>
 
   <div

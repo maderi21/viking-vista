@@ -3,14 +3,15 @@ defineProps({});
 </script>
 
 <template>
-  <div
-    class="bg-contact bg-cover bg-center h-[1340px] flex justify-center items-center"
-  >
-    <div class="text-white flex items-center flex-col">
-      <h3 class="">Your Adventure Begins Here</h3>
-      <p>Discover relax from different angle</p>
+  <div class="bg-contact bg-cover bg-center flex justify-center items-center">
+    <div class="rounded-lg overflow-hidden h-max w-full mb-20 px-44">
+      <iframe
+        class="w-full h-[800px] rounded-lg"
+        src="https://www.youtube.com/embed/Ku1hihc2zvE?start=76"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
     </div>
   </div>
 </template>
-
-<style></style>

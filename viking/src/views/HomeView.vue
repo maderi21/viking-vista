@@ -18,7 +18,7 @@ import Reservations from "./Reservations.vue";
       <Experience />
     </section>
     <section>
-      <!-- <Gift /> -->
+      <Gift />
     </section>
     <section>
       <!-- <Reservations /> -->
