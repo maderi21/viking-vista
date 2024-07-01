@@ -21,7 +21,7 @@ import Reservations from "./Reservations.vue";
       <Gift />
     </section>
     <section>
-      <!-- <Reservations /> -->
+      <Reservations />
     </section>
   </main>
 </template>

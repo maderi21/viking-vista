@@ -10,6 +10,7 @@ export default {
         primary: {
           light: "#EFC25D",
           dark: "#DC892E",
+          green: "#36370E",
         },
         secondary: "#361D04",
         info: "242505",
