@@ -78,12 +78,10 @@ import Button from "./Button.vue";
               >
             </li>
             <li>
-              <Button
-                class="bg-primary rounded-3xl bg- border border-r-100 px-2 py-3"
-              >
+              <Button class="border border-primary-dark rounded-3xl px-2 py-3">
                 <RouterLink
                   to="/reservations"
-                  class="block rounded md:border-0 hover:text-primary-dark md:p-0"
+                  class="block rounded hover:text-primary-dark md:p-0"
                   >RESERVATIONS</RouterLink
                 >
               </Button>

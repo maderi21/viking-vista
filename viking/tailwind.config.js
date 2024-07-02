@@ -18,10 +18,7 @@ export default {
       },
       backgroundImage: {
         hero: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./src/images/1.jpg')",
-        accommodation: "url('./src/images/2.jpg')",
-        experience: "url('./src/images/3.jpg')",
-        contact: "url('./src/images/4.jpg')",
-        gift: "url('./src/images/5.jpg')",
+        ex: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./src/images/ex.jpg')",
       },
     },
   },

@@ -55,7 +55,7 @@ const moveDown = () => {
       </div>
     </div>
     <button class="mt-16">
-      <Button class="border border-white px-10" BtnSize="large"
+      <Button class="border border-primary-dark px-10 w-[300px]" BtnSize="large"
         >Reserve Now</Button
       >
     </button>
