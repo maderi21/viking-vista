@@ -44,6 +44,11 @@ defineProps({});
           >Learn more</Button
         >
       </button>
+      <div class="flex">
+        <div>icon</div>
+        <div><p>text</p></div>
+        <div>connect</div>
+      </div>
     </div>
   </div>
 </template>
