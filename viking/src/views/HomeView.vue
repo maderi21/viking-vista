@@ -4,6 +4,7 @@ import Hero from "../components/Hero.vue";
 import Experience from "./Experience.vue";
 import Gift from "./Gift.vue";
 import Reservations from "./Reservations.vue";
+import Activities from "../assets/pages/Activities.vue";
 </script>
 
 <template>
@@ -23,5 +24,6 @@ import Reservations from "./Reservations.vue";
     <section>
       <Reservations />
     </section>
+    <Activities />
   </main>
 </template>
