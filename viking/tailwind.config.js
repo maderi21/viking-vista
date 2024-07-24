@@ -21,6 +21,10 @@ export default {
         ex: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./src/images/ex.jpg')",
         biking:
           "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./src/images/biking.jpg')",
+        trekking:
+          "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./src/images/trekking.jpg')",
+        swimming:
+          "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./src/images/swimming.jpg')",
       },
     },
   },
