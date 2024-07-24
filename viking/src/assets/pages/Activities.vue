@@ -4,7 +4,7 @@
   <div class="w-full">
     <section id="hero">
       <div
-        class="bg-hero bg-cover bg-center h-[1200px] items-center flex justify-center"
+        class="bg-what bg-cover bg-center h-[1200px] items-center flex justify-center"
       >
         <h1 class="text-white text-6xl text-center">What to do here?</h1>
       </div>
