@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import Button from "@/components/Button.vue";
+</script>
 
 <template>
   <div class="w-full">
@@ -69,6 +71,40 @@
         <div
           class="bg-swimming bg-cover bg-center rounded-lg my-10 mx-10 w-1/2"
         ></div>
+      </div>
+    </section>
+    <section id="hook" class="bg-primary-green">
+      <div class="flex items-center justify-center"></div>
+      <div class="flex justify-center items-center h-[400px]">
+        <div
+          class="bg-primary-green text-white flex justify-center items-center"
+        >
+          <div class="flex justify-center items-center p-10 mt-10">
+            <div class="w-[700px] text-center p-5">
+              <h1 class="text-5xl mb-5">SIGN UP & STAY CONNECTED</h1>
+              <p class="">
+                Stay connected with us! Sign up now to receive the latest
+                updates, exclusive offers, and exciting news straight to your
+                inbox. Be the first to know about our new products, special
+                promotions, and upcoming events. Join our community and never
+                miss out on important announcements and insider info!
+              </p>
+            </div>
+            <div class="flex flex-col space-y-5 items-center mb-5">
+              <input
+                placeholder="Email"
+                class="w-[300px] rounded-3xl px-6 py-3 text-lg"
+              />
+              <button>
+                <Button
+                  class="border border-primary-dark px-10 w-[300px]"
+                  BtnSize="large"
+                  >Stay Connected</Button
+                >
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </div>
