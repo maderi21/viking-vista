@@ -2,6 +2,13 @@
 import { RouterLink } from "vue-router";
 import Icon from "./icons/Icon.vue";
 import Button from "./Button.vue";
+import Aut from "./Aut.vue";
+import { ref } from "vue";
+
+const showAuth = ref(true);
+const toggleAuth = () => {
+  showAuth.value = !showAuth.value;
+};
 </script>
 
 <template>
@@ -74,7 +81,7 @@ import Button from "./Button.vue";
                 to="/gift"
                 class="hover:underline hover:underline-offset-8 block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
               >
-                <Icon name="gift" class="mr-3"> </Icon>GIFT</RouterLink
+                <Icon name="gift" class="mr-3"></Icon>GIFT</RouterLink
               >
             </li>
             <li>
@@ -86,9 +93,18 @@ import Button from "./Button.vue";
                 >
               </Button>
             </li>
+            <li>
+              <button
+                @click="toggleAuth"
+                class="border border-primary-dark rounded-3xl px-4 py-2 hover:bg-gray-200"
+              >
+                Login / Sign Up
+              </button>
+            </li>
           </ul>
         </div>
       </div>
+      <Aut v-if="showAuth" />
     </nav>
   </div>
 </template>
