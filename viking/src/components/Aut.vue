@@ -8,6 +8,7 @@
           id="login-email"
           v-model="loginEmail"
           type="email"
+          name="signup_email"
           required
           class="block w-full mb-4 px-3 py-2 border border-gray-300 rounded"
         />
@@ -16,6 +17,7 @@
           id="login-password"
           v-model="loginPassword"
           type="password"
+          name="signup_password"
           required
           class="block w-full mb-4 px-3 py-2 border border-gray-300 rounded"
         />
@@ -40,6 +42,7 @@
         <label for="signup-email" class="block mb-2">Email</label>
         <input
           id="signup-email"
+          name="login_email"
           v-model="signupEmail"
           type="email"
           required
@@ -49,6 +52,7 @@
         <input
           id="signup-password"
           v-model="signupPassword"
+          name="login_password"
           type="password"
           required
           class="block w-full mb-4 px-3 py-2 border border-gray-300 rounded"
@@ -61,7 +65,13 @@
         </button>
         <p class="mt-4 text-center">
           Already have an account?
-          <a @click="toggleForm" class="text-blue-500 cursor-pointer">Login</a>
+          <a
+            @click="toggleForm"
+            class="text-blue-500 cursor-pointer"
+            method="post"
+            action="includes/formhandler.php"
+            >Login</a
+          >
         </p>
       </form>
     </div>
