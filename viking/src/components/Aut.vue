@@ -1,120 +1,210 @@
 <template>
-  <div class="auth-container">
-    <div v-if="showLogin" class="auth-form">
-      <h2 class="text-2xl font-bold mb-4">Login</h2>
-      <form @submit.prevent="login">
-        <label for="login-email" class="block mb-2">Email</label>
-        <input
-          id="login-email"
-          v-model="loginEmail"
-          type="email"
-          name="signup_email"
-          required
-          class="block w-full mb-4 px-3 py-2 border border-gray-300 rounded"
-        />
-        <label for="login-password" class="block mb-2">Password</label>
-        <input
-          id="login-password"
-          v-model="loginPassword"
-          type="password"
-          name="signup_password"
-          required
-          class="block w-full mb-4 px-3 py-2 border border-gray-300 rounded"
-        />
-        <button
-          type="submit"
-          class="w-full py-2 bg-blue-500 text-white rounded"
-        >
-          Login
-        </button>
-        <p class="mt-4 text-center">
-          Don't have an account?
-          <a @click="toggleForm" class="text-blue-500 cursor-pointer"
-            >Sign Up</a
-          >
-        </p>
-      </form>
-    </div>
+  <section
+    class="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100"
+  >
+    <button
+      @click="showModal('signup')"
+      class="px-4 py-2 mb-4 text-white bg-blue-500 rounded"
+    >
+      Sign Up
+    </button>
+    <button
+      @click="showModal('login')"
+      class="px-4 py-2 text-white bg-green-500 rounded"
+    >
+      Login
+    </button>
 
-    <div v-else class="auth-form">
-      <h2 class="text-2xl font-bold mb-4">Sign Up</h2>
-      <form @submit.prevent="signup">
-        <label for="signup-email" class="block mb-2">Email</label>
-        <input
-          id="signup-email"
-          name="login_email"
-          v-model="signupEmail"
-          type="email"
-          required
-          class="block w-full mb-4 px-3 py-2 border border-gray-300 rounded"
-        />
-        <label for="signup-password" class="block mb-2">Password</label>
-        <input
-          id="signup-password"
-          v-model="signupPassword"
-          name="login_password"
-          type="password"
-          required
-          class="block w-full mb-4 px-3 py-2 border border-gray-300 rounded"
-        />
-        <button
-          type="submit"
-          class="w-full py-2 bg-green-500 text-white rounded"
-        >
-          Sign Up
-        </button>
-        <p class="mt-4 text-center">
-          Already have an account?
-          <a
-            @click="toggleForm"
-            class="text-blue-500 cursor-pointer"
-            method="post"
-            action="includes/formhandler.php"
-            >Login</a
+    <!-- Sign Up Modal -->
+    <transition name="fade">
+      <div
+        v-if="isModalOpen === 'signup'"
+        class="modal fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
+      >
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
+          <button
+            @click="closeModal"
+            class="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
           >
-        </p>
-      </form>
-    </div>
-  </div>
+            &times;
+          </button>
+          <h2 class="text-2xl mb-4">Sign Up</h2>
+          <form @submit.prevent="handleSignup">
+            <label class="block mb-2">
+              <span class="text-gray-700">Email:</span>
+              <input
+                v-model="signupEmail"
+                type="email"
+                required
+                class="form-input mt-1 block w-full"
+              />
+            </label>
+            <label class="block mb-4">
+              <span class="text-gray-700">Password:</span>
+              <input
+                v-model="signupPassword"
+                type="password"
+                required
+                class="form-input mt-1 block w-full"
+              />
+            </label>
+            <button
+              type="submit"
+              class="px-4 py-2 bg-blue-500 text-white rounded"
+            >
+              Sign Up
+            </button>
+            <p
+              v-if="signupMessage"
+              :class="{
+                'text-red-500': signupStatus === 'error',
+                'text-green-500': signupStatus === 'success',
+              }"
+              class="mt-4"
+            >
+              {{ signupMessage }}
+            </p>
+          </form>
+        </div>
+      </div>
+    </transition>
+
+    <!-- Login Modal -->
+    <transition name="fade">
+      <div
+        v-if="isModalOpen === 'login'"
+        class="modal fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
+      >
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
+          <button
+            @click="closeModal"
+            class="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+          >
+            &times;
+          </button>
+          <h2 class="text-2xl mb-4">Login</h2>
+          <form @submit.prevent="handleLogin">
+            <label class="block mb-2">
+              <span class="text-gray-700">Email:</span>
+              <input
+                v-model="loginEmail"
+                type="email"
+                required
+                class="form-input mt-1 block w-full"
+              />
+            </label>
+            <label class="block mb-4">
+              <span class="text-gray-700">Password:</span>
+              <input
+                v-model="loginPassword"
+                type="password"
+                required
+                class="form-input mt-1 block w-full"
+              />
+            </label>
+            <button
+              type="submit"
+              class="px-4 py-2 bg-green-500 text-white rounded"
+            >
+              Login
+            </button>
+            <p
+              v-if="loginMessage"
+              :class="{
+                'text-red-500': loginStatus === 'error',
+                'text-green-500': loginStatus === 'success',
+              }"
+              class="mt-4"
+            >
+              {{ loginMessage }}
+            </p>
+          </form>
+        </div>
+      </div>
+    </transition>
+  </section>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import axios from "axios";
 
-const showLogin = ref(true);
+// Modal state
+const isModalOpen = ref(null);
 
-const loginEmail = ref("");
-const loginPassword = ref("");
+// Sign-up form data and response status
 const signupEmail = ref("");
 const signupPassword = ref("");
+const signupMessage = ref("");
+const signupStatus = ref(""); // 'success' or 'error'
 
-const toggleForm = () => {
-  showLogin.value = !showLogin.value;
+// Login form data and response status
+const loginEmail = ref("");
+const loginPassword = ref("");
+const loginMessage = ref("");
+const loginStatus = ref(""); // 'success' or 'error'
+
+// Show specific modal
+const showModal = (type) => {
+  isModalOpen.value = type;
 };
 
-const login = () => {
-  // Handle login logic
-  console.log("Login:", loginEmail.value, loginPassword.value);
+// Close the modal
+const closeModal = () => {
+  isModalOpen.value = null;
 };
 
-const signup = () => {
-  // Handle signup logic
-  console.log("Sign Up:", signupEmail.value, signupPassword.value);
+// Handle sign-up form submission
+const handleSignup = async () => {
+  try {
+    const response = await axios.post("/path-to-your-signup-endpoint", {
+      email: signupEmail.value,
+      password: signupPassword.value,
+    });
+
+    // Assuming server returns { status: 'success', message: '...' } or { status: 'error', message: '...' }
+    signupMessage.value = response.data.message;
+    signupStatus.value = response.data.status;
+  } catch (error) {
+    signupMessage.value = "An error occurred. Please try again.";
+    signupStatus.value = "error";
+  } finally {
+    // Clear the form and close modal
+    signupEmail.value = "";
+    signupPassword.value = "";
+    closeModal();
+  }
+};
+
+// Handle login form submission
+const handleLogin = async () => {
+  try {
+    const response = await axios.post("/path-to-your-login-endpoint", {
+      email: loginEmail.value,
+      password: loginPassword.value,
+    });
+
+    // Assuming server returns { status: 'success', message: '...' } or { status: 'error', message: '...' }
+    loginMessage.value = response.data.message;
+    loginStatus.value = response.data.status;
+  } catch (error) {
+    loginMessage.value = "An error occurred. Please try again.";
+    loginStatus.value = "error";
+  } finally {
+    // Clear the form and close modal
+    loginEmail.value = "";
+    loginPassword.value = "";
+    closeModal();
+  }
 };
 </script>
 
 <style scoped>
-.auth-container {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.3s;
 }
-
-.auth-form {
-  display: flex;
-  flex-direction: column;
+.modal-enter, .modal-leave-to /* .modal-leave-active in <2.1.8 */ {
+  opacity: 0;
 }
 </style>
