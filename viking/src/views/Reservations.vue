@@ -1,8 +1,15 @@
+<!-- MainComponent.vue -->
 <script setup>
+import { ref } from "vue";
+import SignupForm from "@/components/SignupForm.vue";
 import Button from "@/components/Button.vue";
 import Icon from "@/components/icons/Icon.vue";
 
-defineProps({});
+const showSignupForm = ref(false);
+
+const toggleSignupForm = () => {
+  showSignupForm.value = !showSignupForm.value;
+};
 </script>
 
 <template>
@@ -26,15 +33,20 @@ defineProps({});
             placeholder="Email"
             class="w-[300px] rounded-3xl px-6 py-3 text-lg"
           />
-          <button>
+          <button @click="toggleSignupForm">
             <Button
               class="border border-primary-dark px-10 w-[300px]"
               BtnSize="large"
-              >Stay Connected</Button
             >
+              Stay Connected
+            </Button>
           </button>
         </div>
       </div>
+    </div>
+    <!-- Conditional rendering of SignupForm component -->
+    <div v-if="showSignupForm" class="p-4 bg-gray-100">
+      <SignupForm />
     </div>
     <div
       class="bg-ex text-white bg-cover bg-center h-[600px] flex flex-col justify-center items-center"
@@ -44,8 +56,9 @@ defineProps({});
         <Button
           class="border border-primary-dark px-10 w-[300px] items-center"
           BtnSize="large"
-          >Learn more</Button
         >
+          Learn more
+        </Button>
       </button>
     </div>
     <div>
