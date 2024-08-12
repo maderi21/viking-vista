@@ -1,7 +1,7 @@
 <!-- MainComponent.vue -->
 <script setup>
 import { ref } from "vue";
-import SignupForm from "@/components/SignupForm.vue";
+import SignUp from "@/components/SignUp.vue";
 import Button from "@/components/Button.vue";
 import Icon from "@/components/icons/Icon.vue";
 
@@ -44,9 +44,9 @@ const toggleSignupForm = () => {
         </div>
       </div>
     </div>
-    <!-- Conditional rendering of SignupForm component -->
+
     <div v-if="showSignupForm" class="p-4 bg-gray-100">
-      <SignupForm />
+      <SignUp />
     </div>
     <div
       class="bg-ex text-white bg-cover bg-center h-[600px] flex flex-col justify-center items-center"
