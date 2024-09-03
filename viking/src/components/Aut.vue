@@ -1,16 +1,16 @@
 <template>
   <section
-    class="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100"
+    class="absolute flex flex-col items-center justify-center h-[400px] w-[400px] p-4 bg-gray-100"
   >
     <button
       @click="showModal('signup')"
-      class="px-4 py-2 mb-4 text-white bg-blue-500 rounded"
+      class="btn px-4 py-2 mb-4 text-white bg-blue-500 rounded"
     >
       Sign Up
     </button>
     <button
       @click="showModal('login')"
-      class="px-4 py-2 text-white bg-green-500 rounded"
+      class="btn px-4 py-2 text-white bg-green-500 rounded"
     >
       Login
     </button>
@@ -21,7 +21,7 @@
         v-if="isModalOpen === 'signup'"
         class="modal fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
       >
-        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-md relative">
           <button
             @click="closeModal"
             class="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
@@ -162,36 +162,30 @@ const handleSignup = async () => {
       password: signupPassword.value,
     });
 
-    // Assuming server returns { status: 'success', message: '...' } or { status: 'error', message: '...' }
     signupMessage.value = response.data.message;
     signupStatus.value = response.data.status;
   } catch (error) {
     signupMessage.value = "An error occurred. Please try again.";
     signupStatus.value = "error";
   } finally {
-    // Clear the form and close modal
     signupEmail.value = "";
     signupPassword.value = "";
     closeModal();
   }
 };
 
-// Handle login form submission
 const handleLogin = async () => {
   try {
     const response = await axios.post("/path-to-your-login-endpoint", {
       email: loginEmail.value,
       password: loginPassword.value,
     });
-
-    // Assuming server returns { status: 'success', message: '...' } or { status: 'error', message: '...' }
     loginMessage.value = response.data.message;
     loginStatus.value = response.data.status;
   } catch (error) {
     loginMessage.value = "An error occurred. Please try again.";
     loginStatus.value = "error";
   } finally {
-    // Clear the form and close modal
     loginEmail.value = "";
     loginPassword.value = "";
     closeModal();
@@ -204,7 +198,8 @@ const handleLogin = async () => {
 .modal-leave-active {
   transition: opacity 0.3s;
 }
-.modal-enter, .modal-leave-to /* .modal-leave-active in <2.1.8 */ {
+.modal-enter,
+.modal-leave-to {
   opacity: 0;
 }
 </style>
