@@ -17,15 +17,15 @@ export default {
         top: "E5F1F1",
       },
       backgroundImage: {
-        hero: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./src/images/1.jpg')",
+        hero: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./src/images/1.webp')",
         ex: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./src/images/ex.jpg')",
         biking:
           "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./src/images/biking.jpg')",
         trekking:
-          "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./src/images/trekking.jpg')",
+          "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./src/images/trekking.webp')",
         swimming:
-          "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./src/images/swimming.jpg')",
-        what: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./src/images/what.jpg')",
+          "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./src/images/swimming.webp')",
+        what: "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('./src/images/what.webp')",
       },
     },
   },

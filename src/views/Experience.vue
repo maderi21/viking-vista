@@ -21,9 +21,9 @@ const images = [
   new URL("../images/look3.jpg", import.meta.url).href,
   new URL("../images/look4.jpg", import.meta.url).href,
   new URL("../images/look5.jpg", import.meta.url).href,
-  new URL("../images/look6.jpg", import.meta.url).href,
-  new URL("../images/look7.jpg", import.meta.url).href,
-  new URL("../images/look8.jpg", import.meta.url).href,
+  new URL("../images/look6.webp", import.meta.url).href,
+  new URL("../images/look7.webp", import.meta.url).href,
+  new URL("../images/look8.webp", import.meta.url).href,
 ];
 </script>
 
