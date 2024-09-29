@@ -28,7 +28,7 @@ defineProps({});
       </div>
       <div class="w-1/2 flex justify-center">
         <img
-          src="../images/experience.jpg"
+          src="../images/experience.webp"
           alt="experience"
           class="rounded-lg shadow-xl mt-10 h-[600px] w-[500px]"
         />

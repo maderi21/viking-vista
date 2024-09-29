@@ -16,14 +16,14 @@ function closeModal() {
 }
 
 const images = [
-  new URL("../images/look1.jpg", import.meta.url).href,
-  new URL("../images/look2.jpg", import.meta.url).href,
-  new URL("../images/look3.jpg", import.meta.url).href,
-  new URL("../images/look4.jpg", import.meta.url).href,
-  new URL("../images/look5.jpg", import.meta.url).href,
-  new URL("../images/look6.jpg", import.meta.url).href,
-  new URL("../images/look7.jpg", import.meta.url).href,
-  new URL("../images/look8.jpg", import.meta.url).href,
+  new URL("../images/look1.webp", import.meta.url).href,
+  new URL("../images/look2.webp", import.meta.url).href,
+  new URL("../images/look3.webp", import.meta.url).href,
+  new URL("../images/look4.webp", import.meta.url).href,
+  new URL("../images/look5.webp", import.meta.url).href,
+  new URL("../images/look6.webp", import.meta.url).href,
+  new URL("../images/look7.webp", import.meta.url).href,
+  new URL("../images/look8.webp", import.meta.url).href,
 ];
 </script>
 
