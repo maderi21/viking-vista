@@ -5,8 +5,12 @@ import Button from "./Button.vue";
 import Aut from "./Aut.vue";
 import { ref } from "vue";
 
-const showAuth = ref(true);
-const toggleAuth = () => {
+const showAuth = ref(false); // Initially false to hide the auth modal
+const authType = ref(""); // To store the current auth type (login or signup)
+
+// Toggle auth modal and set the type (either 'login' or 'signup')
+const toggleAuth = (type) => {
+  authType.value = type;
   showAuth.value = !showAuth.value;
 };
 </script>
@@ -18,9 +22,9 @@ const toggleAuth = () => {
         class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
       >
         <a class="flex items-center space-x-3 rtl:space-x-reverse">
-          <span class="self-center text-2xl font-bold whitespace-nowrap"
-            >VIKING VISTA</span
-          >
+          <span class="self-center text-2xl font-bold whitespace-nowrap">
+            VIKING VISTA
+          </span>
         </a>
         <button
           data-collapse-toggle="navbar-default"
@@ -93,18 +97,29 @@ const toggleAuth = () => {
                 >
               </Button>
             </li>
-            <li>
+            <li class="px-5">
+              <!-- Login Button -->
               <button
-                @click="toggleAuth"
+                @click="toggleAuth('login')"
+                class="border border-primary-dark rounded-3xl px-4 py-2 hover:bg-gray-200 mr-4"
+              >
+                Login
+              </button>
+
+              <!-- Sign-up Button -->
+              <button
+                @click="toggleAuth('signup')"
                 class="border border-primary-dark rounded-3xl px-4 py-2 hover:bg-gray-200"
               >
-                Login / Sign Up
+                Sign-up
               </button>
             </li>
           </ul>
         </div>
       </div>
-      <Aut v-if="showAuth" />
+
+      <!-- The Aut component with the selected authType -->
+      <Aut v-if="showAuth" :authType="authType" />
     </nav>
   </div>
 </template>
