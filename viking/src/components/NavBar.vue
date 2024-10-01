@@ -2,13 +2,12 @@
 import { RouterLink } from "vue-router";
 import Icon from "./icons/Icon.vue";
 import Button from "./Button.vue";
-import Aut from "./Aut.vue";
 import { ref } from "vue";
 
-const showAuth = ref(false); // Initially false to hide the auth modal
-const authType = ref(""); // To store the current auth type (login or signup)
+const showAuth = ref(false); // Controls modal visibility
+const authType = ref(""); // 'login' or 'signup'
 
-// Toggle auth modal and set the type (either 'login' or 'signup')
+// Toggle auth modal and set the authType
 const toggleAuth = (type) => {
   authType.value = type;
   showAuth.value = !showAuth.value;
@@ -22,9 +21,9 @@ const toggleAuth = (type) => {
         class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
       >
         <a class="flex items-center space-x-3 rtl:space-x-reverse">
-          <span class="self-center text-2xl font-bold whitespace-nowrap">
-            VIKING VISTA
-          </span>
+          <span class="self-center text-2xl font-bold whitespace-nowrap"
+            >VIKING VISTA</span
+          >
         </a>
         <button
           data-collapse-toggle="navbar-default"
@@ -59,34 +58,32 @@ const toggleAuth = (type) => {
                 to="/accommodation"
                 class="hover:underline hover:underline-offset-8 block hover:text-primary-dark py-2 px-3 rounded md:bg-transparent md:p-0"
               >
-                <Icon name="house" class="mr-3"> </Icon>ACCOMODATION</RouterLink
-              >
+                <Icon name="house" class="mr-3"> </Icon>ACCOMODATION
+              </RouterLink>
             </li>
             <li>
               <RouterLink
                 to="/experience"
                 class="hover:underline hover:underline-offset-8 block py-2 px-3 mx-3 rounded hover:text-primary-dark hover:shadow-md md:border-0 md:p-0"
               >
-                <Icon name="coffee" class="mr-3"> </Icon>
-                EXPERIENCE</RouterLink
-              >
+                <Icon name="coffee" class="mr-3"> </Icon>EXPERIENCE
+              </RouterLink>
             </li>
             <li>
               <RouterLink
                 to="/contact"
                 class="hover:underline hover:underline-offset-8 block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
               >
-                <Icon name="address-card" class="mr-3"> </Icon
-                >CONTACT</RouterLink
-              >
+                <Icon name="address-card" class="mr-3"> </Icon>CONTACT
+              </RouterLink>
             </li>
             <li>
               <RouterLink
                 to="/gift"
                 class="hover:underline hover:underline-offset-8 block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
               >
-                <Icon name="gift" class="mr-3"></Icon>GIFT</RouterLink
-              >
+                <Icon name="gift" class="mr-3"></Icon>GIFT
+              </RouterLink>
             </li>
             <li>
               <Button class="border border-primary-dark rounded-3xl px-2 py-3">
@@ -105,7 +102,6 @@ const toggleAuth = (type) => {
               >
                 Login
               </button>
-
               <!-- Sign-up Button -->
               <button
                 @click="toggleAuth('signup')"
@@ -117,11 +113,68 @@ const toggleAuth = (type) => {
           </ul>
         </div>
       </div>
-
-      <!-- The Aut component with the selected authType -->
-      <Aut v-if="showAuth" :authType="authType" />
     </nav>
+
+    <!-- Auth Modal -->
+    <div
+      v-if="showAuth"
+      class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+    >
+      <div class="bg-white p-6 rounded-lg w-full max-w-md">
+        <h3 class="text-2xl font-bold mb-4">
+          {{ authType === "signup" ? "Sign Up" : "Login" }}
+        </h3>
+
+        <!-- Form -->
+        <form @submit.prevent="submitForm">
+          <div v-if="authType === 'signup'" class="mb-4">
+            <label class="block mb-2 text-sm font-medium">Name</label>
+            <input
+              type="text"
+              class="w-full p-2 border border-gray-300 rounded"
+              placeholder="Enter your name"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label class="block mb-2 text-sm font-medium">Email</label>
+            <input
+              type="email"
+              class="w-full p-2 border border-gray-300 rounded"
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label class="block mb-2 text-sm font-medium">Password</label>
+            <input
+              type="password"
+              class="w-full p-2 border border-gray-300 rounded"
+              placeholder="Enter your password"
+            />
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="w-full bg-primary-dark text-white p-2 rounded mt-4"
+          >
+            {{ authType === "signup" ? "Create Account" : "Login" }}
+          </button>
+        </form>
+
+        <!-- Close Button -->
+        <button
+          @click="toggleAuth('')"
+          class="mt-4 text-sm text-primary-dark underline"
+        >
+          Close
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
-<style></style>
+<style scoped>
+/* Add additional styles if necessary */
+</style>

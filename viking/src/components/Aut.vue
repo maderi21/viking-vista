@@ -1,117 +1,107 @@
 <template>
   <div>
-    <section
-      class="absolute flex flex-col items-center justify-center h-[400px] w-[400px] p-4 bg-gray-100"
-    >
+    <!-- Container without absolute positioning -->
+    <section class="p-4 bg-gray-100 w-96 h-96 absolute rounded-lg">
       <!-- Sign Up Modal -->
-      <transition name="fade">
-        <div
-          v-if="authType === 'signup'"
-          class="modal fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
-        >
-          <div class="bg-white p-6 rounded-lg shadow-lg max-w-md relative">
+
+      <div class="flex items-center justify-center bg-gray-800 bg-opacity-50">
+        <div class="bg-white p-6 rounded-lg shadow-lg relative">
+          <button
+            @click="closeModal"
+            class="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+          >
+            &times;
+          </button>
+          <h2 class="text-2xl mb-4">Sign Up</h2>
+          <form @submit.prevent="handleSignup">
+            <label class="block mb-2">
+              <span class="text-gray-700">Email:</span>
+              <input
+                v-model="signupEmail"
+                type="email"
+                required
+                class="form-input mt-1 block w-full"
+              />
+            </label>
+            <label class="block mb-4">
+              <span class="text-gray-700">Password:</span>
+              <input
+                v-model="signupPassword"
+                type="password"
+                required
+                class="form-input mt-1 block w-full"
+              />
+            </label>
             <button
-              @click="closeModal"
-              class="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+              type="submit"
+              class="px-4 py-2 bg-blue-500 text-white rounded"
             >
-              &times;
+              Sign Up
             </button>
-            <h2 class="text-2xl mb-4">Sign Up</h2>
-            <form @submit.prevent="handleSignup">
-              <label class="block mb-2">
-                <span class="text-gray-700">Email:</span>
-                <input
-                  v-model="signupEmail"
-                  type="email"
-                  required
-                  class="form-input mt-1 block w-full"
-                />
-              </label>
-              <label class="block mb-4">
-                <span class="text-gray-700">Password:</span>
-                <input
-                  v-model="signupPassword"
-                  type="password"
-                  required
-                  class="form-input mt-1 block w-full"
-                />
-              </label>
-              <button
-                type="submit"
-                class="px-4 py-2 bg-blue-500 text-white rounded"
-              >
-                Sign Up
-              </button>
-              <p
-                v-if="signupMessage"
-                :class="{
-                  'text-red-500': signupStatus === 'error',
-                  'text-green-500': signupStatus === 'success',
-                }"
-                class="mt-4"
-              >
-                {{ signupMessage }}
-              </p>
-            </form>
-          </div>
+            <p
+              v-if="signupMessage"
+              :class="{
+                'text-red-500': signupStatus === 'error',
+                'text-green-500': signupStatus === 'success',
+              }"
+              class="mt-4"
+            >
+              {{ signupMessage }}
+            </p>
+          </form>
         </div>
-      </transition>
+      </div>
 
       <!-- Login Modal -->
-      <transition name="fade">
-        <div
-          v-if="authType === 'login'"
-          class="modal fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
-        >
-          <div
-            class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative"
+      <div
+        class="inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
+      >
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full relative">
+          <button
+            @click="closeModal"
+            class="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
           >
+            &times;
+          </button>
+          <h2 class="text-2xl mb-4">Login</h2>
+          <form @submit.prevent="handleLogin">
+            <label class="block mb-2">
+              <span class="text-gray-700">Email:</span>
+              <input
+                v-model="loginEmail"
+                type="email"
+                required
+                class="form-input mt-1 block w-full"
+              />
+            </label>
+            <label class="block mb-4">
+              <span class="text-gray-700">Password:</span>
+              <input
+                v-model="loginPassword"
+                type="password"
+                required
+                class="form-input mt-1 block w-full"
+              />
+            </label>
             <button
-              @click="closeModal"
-              class="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
+              type="submit"
+              class="px-4 py-2 bg-green-500 text-white rounded"
             >
-              &times;
+              Login
             </button>
-            <h2 class="text-2xl mb-4">Login</h2>
-            <form @submit.prevent="handleLogin">
-              <label class="block mb-2">
-                <span class="text-gray-700">Email:</span>
-                <input
-                  v-model="loginEmail"
-                  type="email"
-                  required
-                  class="form-input mt-1 block w-full"
-                />
-              </label>
-              <label class="block mb-4">
-                <span class="text-gray-700">Password:</span>
-                <input
-                  v-model="loginPassword"
-                  type="password"
-                  required
-                  class="form-input mt-1 block w-full"
-                />
-              </label>
-              <button
-                type="submit"
-                class="px-4 py-2 bg-green-500 text-white rounded"
-              >
-                Login
-              </button>
-              <p
-                v-if="loginMessage"
-                :class="{
-                  'text-red-500': loginStatus === 'error',
-                  'text-green-500': loginStatus === 'success',
-                }"
-                class="mt-4"
-              >
-                {{ loginMessage }}
-              </p>
-            </form>
-          </div>
+            <p
+              v-if="loginMessage"
+              :class="{
+                'text-red-500': loginStatus === 'error',
+                'text-green-500': loginStatus === 'success',
+              }"
+              class="mt-4"
+            >
+              {{ loginMessage }}
+            </p>
+          </form>
         </div>
-      </transition>
+      </div>
     </section>
   </div>
 </template>
