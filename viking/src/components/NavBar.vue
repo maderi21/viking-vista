@@ -2,16 +2,29 @@
 import { RouterLink } from "vue-router";
 import Icon from "./icons/Icon.vue";
 import Button from "./Button.vue";
-import { ref } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 
-const showAuth = ref(false); // Controls modal visibility
-const authType = ref(""); // 'login' or 'signup'
+const showAuth = ref(false);
+const authType = ref("");
 
-// Toggle auth modal and set the authType
 const toggleAuth = (type) => {
   authType.value = type;
   showAuth.value = !showAuth.value;
 };
+
+const closeAuthOnEsc = (event) => {
+  if (event.key === "Escape") {
+    toggleAuth("");
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("keydown", closeAuthOnEsc);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("keydown", closeAuthOnEsc);
+});
 </script>
 
 <template>
@@ -115,17 +128,15 @@ const toggleAuth = (type) => {
       </div>
     </nav>
 
-    <!-- Auth Modal -->
     <div
       v-if="showAuth"
       class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
     >
       <div class="bg-white p-6 rounded-lg w-full max-w-md">
-        <h3 class="text-2xl font-bold mb-4">
+        <h3 class="text-2xl font-bold mb-4 text-black">
           {{ authType === "signup" ? "Sign Up" : "Login" }}
         </h3>
 
-        <!-- Form -->
         <form @submit.prevent="submitForm">
           <div v-if="authType === 'signup'" class="mb-4">
             <label class="block mb-2 text-sm font-medium">Name</label>
