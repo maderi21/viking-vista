@@ -5,6 +5,7 @@ import Experience from "./Experience.vue";
 import Gift from "./Gift.vue";
 import Reservations from "./Reservations.vue";
 import Activities from "../assets/pages/Activities.vue";
+import LogedIn from "./LogedIn.vue";
 </script>
 
 <template>
@@ -25,5 +26,6 @@ import Activities from "../assets/pages/Activities.vue";
       <Reservations />
     </section>
     <Activities />
+    <LogedIn />
   </main>
 </template>
