@@ -2,6 +2,7 @@
 import Icon from "./icons/Icon.vue";
 import Button from "./Button.vue";
 import NavBar from "./NavBar.vue";
+import Litepicker from "litepicker";
 
 const scrollAmount = 500;
 
@@ -11,6 +12,37 @@ const moveDown = () => {
     behavior: "smooth",
   });
 };
+
+function openModal() {
+  document.getElementById("dateModal").classList.remove("hidden");
+  if (!window.datePicker) {
+    window.datePicker = new Litepicker({
+      element: document.getElementById("datePickerInput"),
+      singleMode: false,
+      format: "YYYY-MM-DD",
+      numberOfMonths: 2,
+      numberOfColumns: 2,
+      numberOfDays: 7,
+      minDate: new Date().toISOString(),
+      maxDate: new Date(
+        new Date().setFullYear(new Date().getFullYear() + 1)
+      ).toISOString(),
+      onSelect: (date1, date2) => {
+        console.log("Selected Dates:", date1, date2);
+      },
+    });
+  }
+}
+
+function closeModal() {
+  document.getElementById("dateModal").classList.add("hidden");
+}
+
+function confirmDates() {
+  const selectedDates = datePicker.getDateRange();
+  console.log("Selected Dates:", selectedDates);
+  closeModal();
+}
 </script>
 
 <template>
@@ -54,10 +86,42 @@ const moveDown = () => {
         </p>
       </div>
     </div>
-    <button class="mt-16">
+    <button class="mt-16" @click="openModal()">
       <Button class="border border-primary-dark px-10 w-[300px]" BtnSize="large"
         >Reserve Now</Button
       >
     </button>
+    <div
+      id="dateModal"
+      class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden"
+    >
+      <div class="bg-white p-8 rounded-lg max-w-sm w-full relative">
+        <h2 class="text-xl font-bold mb-4 text-black">
+          Pick Reservation Dates
+        </h2>
+
+        <input
+          type="text"
+          id="datePickerInput"
+          class="w-full border border-gray-300 p-2 rounded mb-4"
+          placeholder="Select dates"
+          readonly
+        />
+
+        <button
+          @click="closeModal()"
+          class="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+        >
+          &times;
+        </button>
+
+        <button
+          class="w-full bg-primary-dark text-white py-2 rounded"
+          @click="confirmDates()"
+        >
+          Confirm
+        </button>
+      </div>
+    </div>
   </div>
 </template>
