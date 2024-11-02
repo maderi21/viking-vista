@@ -15,6 +15,7 @@ const moveDown = () => {
 
 function openModal() {
   document.getElementById("dateModal").classList.remove("hidden");
+
   if (!window.datePicker) {
     window.datePicker = new Litepicker({
       element: document.getElementById("datePickerInput"),
@@ -22,7 +23,6 @@ function openModal() {
       format: "YYYY-MM-DD",
       numberOfMonths: 2,
       numberOfColumns: 2,
-      numberOfDays: 7,
       minDate: new Date().toISOString(),
       maxDate: new Date(
         new Date().setFullYear(new Date().getFullYear() + 1)
@@ -34,12 +34,16 @@ function openModal() {
   }
 }
 
+function getDateRange() {
+  return window.datePicker.getDate();
+}
+
 function closeModal() {
   document.getElementById("dateModal").classList.add("hidden");
 }
 
 function confirmDates() {
-  const selectedDates = datePicker.getDateRange();
+  const selectedDates = getDateRange();
   console.log("Selected Dates:", selectedDates);
   closeModal();
 }

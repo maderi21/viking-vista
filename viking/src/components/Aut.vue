@@ -1,11 +1,11 @@
 <template>
   <div>
-    <!-- Container without absolute positioning -->
-    <section class="p-4 bg-gray-100 w-96 h-96 absolute rounded-lg">
-      <!-- Sign Up Modal -->
-
-      <div class="flex items-center justify-center bg-gray-800 bg-opacity-50">
-        <div class="bg-white p-6 rounded-lg shadow-lg relative">
+    <section class="p-4 bg-gray-100 w-96 h-96 rounded-lg relative">
+      <div
+        v-if="authType === 'signup'"
+        class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
+      >
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full relative">
           <button
             @click="closeModal"
             class="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
@@ -52,9 +52,9 @@
         </div>
       </div>
 
-      <!-- Login Modal -->
       <div
-        class="inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
+        v-if="authType === 'login'"
+        class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
       >
         <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full relative">
           <button
@@ -110,40 +110,32 @@
 import { ref } from "vue";
 import axios from "axios";
 
-// Sign-up form data and response status
 const signupEmail = ref("");
 const signupPassword = ref("");
 const signupMessage = ref("");
-const signupStatus = ref(""); // 'success' or 'error'
+const signupStatus = ref("");
 
-// Login form data and response status
 const loginEmail = ref("");
 const loginPassword = ref("");
 const loginMessage = ref("");
-const loginStatus = ref(""); // 'success' or 'error'
+const loginStatus = ref("");
 
-// Modal state control
-const authType = ref(""); // 'signup' or 'login'
+const authType = ref("");
 
-// Open the Sign Up modal
 const openSignupModal = () => {
-  authType.value = "signup"; // Opens the Sign Up modal
+  authType.value = "signup";
 };
-
-// Open the Login modal
 const openLoginModal = () => {
-  authType.value = "login"; // Opens the Login modal
+  authType.value = "login";
 };
 
-// Close the modal
 const closeModal = () => {
-  authType.value = ""; // Closes both modals
+  authType.value = "";
 };
 
-// Handle sign-up form submission
 const handleSignup = async () => {
   try {
-    const response = await axios.post("/path-to-your-signup-endpoint", {
+    const response = await axios.post("/api/signup", {
       email: signupEmail.value,
       password: signupPassword.value,
     });
@@ -160,13 +152,13 @@ const handleSignup = async () => {
   }
 };
 
-// Handle login form submission
 const handleLogin = async () => {
   try {
-    const response = await axios.post("/path-to-your-login-endpoint", {
+    const response = await axios.post("/api/login", {
       email: loginEmail.value,
       password: loginPassword.value,
     });
+
     loginMessage.value = response.data.message;
     loginStatus.value = response.data.status;
   } catch (error) {
