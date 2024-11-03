@@ -108,7 +108,11 @@
 
 <script setup>
 import { ref } from "vue";
-import axios from "axios";
+import { auth } from "./firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const signupEmail = ref("");
 const signupPassword = ref("");
@@ -135,15 +139,20 @@ const closeModal = () => {
 
 const handleSignup = async () => {
   try {
-    const response = await axios.post("/api/signup", {
-      email: signupEmail.value,
-      password: signupPassword.value,
-    });
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      signupEmail.value,
+      signupPassword.value
+    );
 
-    signupMessage.value = response.data.message;
-    signupStatus.value = response.data.status;
+    const user = userCredential.user;
+    console.log("User UID:", user.uid);
+    console.log("User Email:", user.email);
+
+    signupMessage.value = "Sign up successful!";
+    signupStatus.value = "success";
   } catch (error) {
-    signupMessage.value = "An error occurred. Please try again.";
+    signupMessage.value = error.message;
     signupStatus.value = "error";
   } finally {
     signupEmail.value = "";
@@ -154,15 +163,20 @@ const handleSignup = async () => {
 
 const handleLogin = async () => {
   try {
-    const response = await axios.post("/api/login", {
-      email: loginEmail.value,
-      password: loginPassword.value,
-    });
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      loginEmail.value,
+      loginPassword.value
+    );
 
-    loginMessage.value = response.data.message;
-    loginStatus.value = response.data.status;
+    const user = userCredential.user;
+    console.log("User UID:", user.uid);
+    console.log("User Email:", user.email);
+
+    loginMessage.value = "Login successful!";
+    loginStatus.value = "success";
   } catch (error) {
-    loginMessage.value = "An error occurred. Please try again.";
+    loginMessage.value = error.message;
     loginStatus.value = "error";
   } finally {
     loginEmail.value = "";
