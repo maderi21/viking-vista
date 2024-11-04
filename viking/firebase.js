@@ -13,7 +13,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyC562ZMyvM6qOFnhFRKyr5u7g2r9DfLm5w",
   authDomain: "viking-vista.firebaseapp.com",
   projectId: "viking-vista",
-  storageBucket: "viking-vista.appspot.com", // Note: Corrected storage bucket URL
+  storageBucket: "viking-vista.appspot.com",
   messagingSenderId: "736212484415",
   appId: "1:736212484415:web:4819f7072bc761b00c938a",
   measurementId: "G-S0HJKQKDLD",
