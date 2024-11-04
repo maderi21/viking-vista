@@ -107,7 +107,7 @@ function confirmDates() {
         <input
           type="text"
           id="datePickerInput"
-          class="w-full border border-gray-300 p-2 rounded mb-4"
+          class="w-full border border-gray-300 p-2 rounded mb-4 text-black"
           placeholder="Select dates"
           readonly
         />
