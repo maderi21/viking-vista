@@ -1,11 +1,16 @@
 <script setup>
-import { RouterLink } from "vue-router";
-import Icon from "./icons/Icon.vue";
-import Button from "./Button.vue";
 import { ref, onMounted, onBeforeUnmount } from "vue";
+import {
+  auth,
+  createUserWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+} from "../../firebase";
 
 const showAuth = ref(false);
 const authType = ref("");
+const isUserLoggedIn = ref(false);
 
 const toggleAuth = (type) => {
   authType.value = type;
@@ -18,8 +23,49 @@ const closeAuthOnEsc = (event) => {
   }
 };
 
+const email = ref("");
+const password = ref("");
+const name = ref("");
+
+const submit = () => {
+  if (authType.value === "signup") {
+    createUserWithEmailAndPassword(auth, email.value, password.value)
+      .then((userCredential) => {
+        alert("User created successfully!");
+        showAuth.value = false;
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        alert(errorMessage);
+      });
+  } else if (authType.value === "login") {
+    signInWithEmailAndPassword(auth, email.value, password.value)
+      .then((userCredential) => {
+        alert("Logged in successfully!");
+        showAuth.value = false;
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        alert(errorMessage);
+      });
+  }
+};
+
+const logout = () => {
+  signOut(auth)
+    .then(() => {
+      alert("Logged out successfully!");
+    })
+    .catch((error) => {
+      console.error("Error logging out:", error);
+    });
+};
+
 onMounted(() => {
   document.addEventListener("keydown", closeAuthOnEsc);
+  onAuthStateChanged(auth, (user) => {
+    isUserLoggedIn.value = !!user;
+  });
 });
 
 onBeforeUnmount(() => {
@@ -108,20 +154,29 @@ onBeforeUnmount(() => {
               </Button>
             </li>
             <li class="px-5">
-              <!-- Login Button -->
-              <button
-                @click="toggleAuth('login')"
-                class="border border-primary-dark rounded-3xl px-4 py-2 hover:bg-gray-200 mr-4"
-              >
-                Login
-              </button>
-              <!-- Sign-up Button -->
-              <button
-                @click="toggleAuth('signup')"
-                class="border border-primary-dark rounded-3xl px-4 py-2 hover:bg-gray-200"
-              >
-                Sign-up
-              </button>
+              <!-- Conditionally render Login/Sign-up or Logout button -->
+              <div v-if="!isUserLoggedIn">
+                <button
+                  @click="toggleAuth('login')"
+                  class="border border-primary-dark rounded-3xl px-4 py-2 hover:bg-gray-200 mr-4"
+                >
+                  Login
+                </button>
+                <button
+                  @click="toggleAuth('signup')"
+                  class="border border-primary-dark rounded-3xl px-4 py-2 hover:bg-gray-200"
+                >
+                  Sign-up
+                </button>
+              </div>
+              <div v-else>
+                <button
+                  @click="logout"
+                  class="border border-primary-dark rounded-3xl px-4 py-2 hover:bg-gray-200"
+                >
+                  Logout
+                </button>
+              </div>
             </li>
           </ul>
         </div>
@@ -137,13 +192,16 @@ onBeforeUnmount(() => {
           {{ authType === "signup" ? "Sign Up" : "Login" }}
         </h3>
 
-        <form @submit.prevent="submitForm">
+        <form @submit.prevent="submit">
           <div v-if="authType === 'signup'" class="mb-4">
-            <label class="block mb-2 text-sm font-medium">Name</label>
+            <label class="block mb-2 text-sm font-medium text-black"
+              >Name</label
+            >
             <input
+              v-model="name"
               type="text"
               id="name"
-              class="w-full p-2 border border-gray-300 rounded"
+              class="w-full p-2 border border-gray-300 rounded text-black"
               placeholder="Enter your name"
             />
           </div>
@@ -151,9 +209,10 @@ onBeforeUnmount(() => {
           <div class="mb-4">
             <label class="block mb-2 text-sm font-medium">Email</label>
             <input
+              v-model="email"
               type="email"
               id="email"
-              class="w-full p-2 border border-gray-300 rounded"
+              class="w-full p-2 border border-gray-300 rounded text-black"
               placeholder="Enter your email"
             />
           </div>
@@ -161,9 +220,10 @@ onBeforeUnmount(() => {
           <div class="mb-4">
             <label class="block mb-2 text-sm font-medium">Password</label>
             <input
+              v-model="password"
               type="password"
               id="password"
-              class="w-full p-2 border border-gray-300 rounded"
+              class="w-full p-2 border border-gray-300 rounded text-black"
               placeholder="Enter your password"
             />
           </div>
