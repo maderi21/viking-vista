@@ -1,7 +1,6 @@
 <!-- MainComponent.vue -->
 <script setup>
 import { ref } from "vue";
-import SignUp from "@/components/SignUp.vue";
 import Button from "@/components/Button.vue";
 import Icon from "@/components/icons/Icon.vue";
 

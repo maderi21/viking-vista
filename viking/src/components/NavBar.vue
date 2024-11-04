@@ -142,6 +142,7 @@ onBeforeUnmount(() => {
             <label class="block mb-2 text-sm font-medium">Name</label>
             <input
               type="text"
+              id="name"
               class="w-full p-2 border border-gray-300 rounded"
               placeholder="Enter your name"
             />
@@ -151,6 +152,7 @@ onBeforeUnmount(() => {
             <label class="block mb-2 text-sm font-medium">Email</label>
             <input
               type="email"
+              id="email"
               class="w-full p-2 border border-gray-300 rounded"
               placeholder="Enter your email"
             />
@@ -160,6 +162,7 @@ onBeforeUnmount(() => {
             <label class="block mb-2 text-sm font-medium">Password</label>
             <input
               type="password"
+              id="password"
               class="w-full p-2 border border-gray-300 rounded"
               placeholder="Enter your password"
             />
