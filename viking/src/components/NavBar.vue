@@ -189,11 +189,8 @@ onBeforeUnmount(() => {
                   <Icon name="user" class="mr-2"></Icon>
                   <p>{{ name }}</p>
                 </div>
-                <button
-                  @click="logout"
-                  class="border border-primary-dark rounded-3xl px-4 py-2 hover:bg-gray-200"
-                >
-                  Logout
+                <button @click="logout" class="hover:text-primary-dark">
+                  <Icon name="right-from-bracket" />
                 </button>
               </div>
             </li>
