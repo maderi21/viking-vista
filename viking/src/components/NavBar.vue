@@ -7,10 +7,14 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "../../firebase";
+import Icon from "../components/icons/Icon.vue";
 
 const showAuth = ref(false);
 const authType = ref("");
 const isUserLoggedIn = ref(false);
+const name = ref("");
+const email = ref("");
+const password = ref("");
 
 const toggleAuth = (type) => {
   authType.value = type;
@@ -23,14 +27,12 @@ const closeAuthOnEsc = (event) => {
   }
 };
 
-const email = ref("");
-const password = ref("");
-const name = ref("");
-
 const submit = () => {
   if (authType.value === "signup") {
     createUserWithEmailAndPassword(auth, email.value, password.value)
       .then((userCredential) => {
+        name.value = name.value;
+        localStorage.setItem("userName", name.value);
         alert("User created successfully!");
         showAuth.value = false;
       })
@@ -41,6 +43,10 @@ const submit = () => {
   } else if (authType.value === "login") {
     signInWithEmailAndPassword(auth, email.value, password.value)
       .then((userCredential) => {
+        const user = userCredential.user;
+        name.value = user.displayName || "User";
+        localStorage.setItem("userName", name.value);
+
         alert("Logged in successfully!");
         showAuth.value = false;
       })
@@ -55,6 +61,9 @@ const logout = () => {
   signOut(auth)
     .then(() => {
       alert("Logged out successfully!");
+      isUserLoggedIn.value = false;
+      name.value = "";
+      localStorage.removeItem("userName");
     })
     .catch((error) => {
       console.error("Error logging out:", error);
@@ -63,8 +72,12 @@ const logout = () => {
 
 onMounted(() => {
   document.addEventListener("keydown", closeAuthOnEsc);
+
   onAuthStateChanged(auth, (user) => {
     isUserLoggedIn.value = !!user;
+    if (user) {
+      name.value = localStorage.getItem("userName") || "User";
+    }
   });
 });
 
@@ -153,7 +166,7 @@ onBeforeUnmount(() => {
                 >
               </Button>
             </li>
-            <li class="px-5">
+            <li class="px-5 flex">
               <!-- Conditionally render Login/Sign-up or Logout button -->
               <div v-if="!isUserLoggedIn">
                 <button
@@ -169,7 +182,13 @@ onBeforeUnmount(() => {
                   Sign-up
                 </button>
               </div>
-              <div v-else>
+              <div v-else class="flex flex-row items-center space-x-3">
+                <div
+                  class="flex items-center hover:underline hover:underline-offset-8 hover:text-primary-dark py-2 px-3 rounded md:bg-transparent md:p-0"
+                >
+                  <Icon name="user" class="mr-2"></Icon>
+                  <p>{{ name }}</p>
+                </div>
                 <button
                   @click="logout"
                   class="border border-primary-dark rounded-3xl px-4 py-2 hover:bg-gray-200"
@@ -248,7 +267,3 @@ onBeforeUnmount(() => {
     </div>
   </div>
 </template>
-
-<style scoped>
-/* Add additional styles if necessary */
-</style>
