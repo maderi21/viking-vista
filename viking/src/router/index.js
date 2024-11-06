@@ -35,7 +35,7 @@ const router = createRouter({
       component: Reservations,
     },
     {
-      path: "/Experience",
+      path: "/experience",
       name: "Experience",
       component: Experience,
     },
