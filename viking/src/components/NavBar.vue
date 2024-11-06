@@ -8,6 +8,7 @@ import {
   signInWithEmailAndPassword,
 } from "../../firebase";
 import Icon from "../components/icons/Icon.vue";
+import { RouterLink } from "vue-router";
 
 const showAuth = ref(false);
 const authType = ref("");
@@ -33,7 +34,6 @@ const submit = () => {
       .then((userCredential) => {
         name.value = name.value;
         localStorage.setItem("userName", name.value);
-        alert("User created successfully!");
         showAuth.value = false;
       })
       .catch((error) => {
@@ -46,8 +46,6 @@ const submit = () => {
         const user = userCredential.user;
         name.value = user.displayName || "User";
         localStorage.setItem("userName", name.value);
-
-        alert("Logged in successfully!");
         showAuth.value = false;
       })
       .catch((error) => {
@@ -127,7 +125,7 @@ onBeforeUnmount(() => {
           >
             <li>
               <RouterLink
-                to="/accommodation"
+                to="/accomodation"
                 class="hover:underline hover:underline-offset-8 block hover:text-primary-dark py-2 px-3 rounded md:bg-transparent md:p-0"
               >
                 <Icon name="house" class="mr-3"> </Icon>ACCOMODATION
