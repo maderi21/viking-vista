@@ -12,6 +12,7 @@ export default {
           dark: "#DC892E",
           green: "#36370E",
         },
+        backround: "#F7E7CE",
         secondary: "#361D04",
         info: "242505",
         top: "E5F1F1",

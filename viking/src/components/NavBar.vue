@@ -85,12 +85,12 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="w-full sticky top-0">
-    <nav class="">
+  <div class="w-full sticky top-0 bg-backround">
+    <nav class="bg-primary">
       <div
         class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
       >
-        <a class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="#home" class="flex items-center space-x-3 rtl:space-x-reverse">
           <span class="self-center text-2xl font-bold whitespace-nowrap"
             >VIKING VISTA</span
           >
