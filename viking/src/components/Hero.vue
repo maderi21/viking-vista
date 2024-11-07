@@ -1,7 +1,6 @@
 <script setup>
 import Icon from "./icons/Icon.vue";
 import Button from "./Button.vue";
-import NavBar from "./NavBar.vue";
 import Litepicker from "litepicker";
 
 function openModal() {
@@ -44,7 +43,6 @@ function confirmDates() {
   <div
     class="bg-hero text-white bg-cover bg-center h-[1350px] flex flex-col items-center rounded-b-3xl"
   >
-    <nav-bar></nav-bar>
     <div class="flex items-center flex-col mt-52">
       <h1 class="text-6xl mb-5">Your Adventure</h1>
       <h1 class="text-6xl">Begins In Our Remote Cabin</h1>

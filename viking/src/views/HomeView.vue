@@ -10,22 +10,26 @@ import LogedIn from "./LogedIn.vue";
 
 <template>
   <main>
-    <section>
+    <section id="hero">
       <Hero />
     </section>
-    <section>
+    <section id="accommodation">
       <Accommodation />
     </section>
-    <section>
+    <section id="experience">
       <Experience />
     </section>
-    <section>
+    <section id="gift">
       <Gift />
     </section>
-    <section>
+    <section id="reservations">
       <Reservations />
     </section>
-    <Activities />
-    <LogedIn />
+    <section id="activities">
+      <Activities />
+    </section>
+    <section id="logedin">
+      <LogedIn />
+    </section>
   </main>
 </template>

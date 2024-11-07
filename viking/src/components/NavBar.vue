@@ -86,7 +86,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="w-full sticky top-0">
-    <nav class="bg-blend-hue backdrop-blur-md mt-10">
+    <nav class="">
       <div
         class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
       >
@@ -124,36 +124,37 @@ onBeforeUnmount(() => {
             class="font-medium px-5 flex flex-col items-center p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0"
           >
             <li>
-              <RouterLink
-                to="/accomodation"
+              <a
+                href="#accommodation"
                 class="hover:underline hover:underline-offset-8 block hover:text-primary-dark py-2 px-3 rounded md:bg-transparent md:p-0"
               >
-                <Icon name="house" class="mr-3"> </Icon>ACCOMODATION
-              </RouterLink>
+                <Icon name="house" class="mr-3"> </Icon>ACCOMMODATION
+              </a>
             </li>
+
             <li>
-              <RouterLink
-                to="/experience"
+              <a
+                href="/#experience"
                 class="hover:underline hover:underline-offset-8 block py-2 px-3 mx-3 rounded hover:text-primary-dark hover:shadow-md md:border-0 md:p-0"
               >
                 <Icon name="coffee" class="mr-3"> </Icon>EXPERIENCE
-              </RouterLink>
+              </a>
             </li>
             <li>
-              <RouterLink
-                to="/contact"
+              <a
+                href="/#contact"
                 class="hover:underline hover:underline-offset-8 block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
               >
                 <Icon name="address-card" class="mr-3"> </Icon>CONTACT
-              </RouterLink>
+              </a>
             </li>
             <li>
-              <RouterLink
-                to="/gift"
+              <a
+                href="/gift"
                 class="hover:underline hover:underline-offset-8 block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
               >
                 <Icon name="gift" class="mr-3"></Icon>GIFT
-              </RouterLink>
+              </a>
             </li>
             <li>
               <Button class="border border-primary-dark rounded-3xl px-2 py-3">
