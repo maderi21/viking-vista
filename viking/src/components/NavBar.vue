@@ -142,15 +142,7 @@ onBeforeUnmount(() => {
             </li>
             <li>
               <a
-                href="/#contact"
-                class="hover:underline hover:underline-offset-8 block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
-              >
-                <Icon name="address-card" class="mr-3"> </Icon>CONTACT
-              </a>
-            </li>
-            <li>
-              <a
-                href="/gift"
+                href="/#gift"
                 class="hover:underline hover:underline-offset-8 block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
               >
                 <Icon name="gift" class="mr-3"></Icon>GIFT

@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import Accommodation from "@/views/Accommodation.vue";
-import Contact from "@/views/Contact.vue";
 import Gift from "@/views/Gift.vue";
 import Reservations from "@/views/Reservations.vue";
 import Experience from "@/views/Experience.vue";
@@ -18,11 +17,6 @@ const router = createRouter({
       path: "/accomodation",
       name: "Accomodation",
       component: Accommodation,
-    },
-    {
-      path: "/Contact",
-      name: "Contact",
-      component: Contact,
     },
     {
       path: "/Gift",
