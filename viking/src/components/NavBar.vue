@@ -31,10 +31,8 @@ const closeAuthOnEsc = (event) => {
 const submit = () => {
   if (authType.value === "signup") {
     createUserWithEmailAndPassword(auth, email.value, password.value)
-      .then((userCredential) => {
-        name.value = name.value;
-        localStorage.setItem("userName", name.value);
-        showAuth.value = false;
+      .then(() => {
+        authType.value = "login";
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -149,10 +147,10 @@ onBeforeUnmount(() => {
               </a>
             </li>
             <li>
-              <Button class="border border-primary-dark rounded-3xl px-2 py-3">
+              <Button class="border border-primary-dark rounded-3xl px-4 py-3">
                 <RouterLink
                   to="/reservations"
-                  class="block rounded hover:text-primary-dark md:p-0"
+                  class="block rounded hover:text-primary-dark"
                   >RESERVATIONS</RouterLink
                 >
               </Button>
