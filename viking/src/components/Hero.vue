@@ -3,12 +3,13 @@ import { ref, computed, watch } from "vue";
 import Button from "./Button.vue";
 import Litepicker from "litepicker";
 
-// Reactive variables
 const pricePerNight = 49.99;
-const nights = ref(0); // To store the number of nights
-const selectedDates = ref([null, null]); // To store the selected dates
+const nights = ref(0);
+const selectedDates = ref([null, null]);
 
-// Function to open the date picker modal
+const numberOfGuests = ref(1);
+const guests = ref([{ name: "", surname: "" }]);
+
 function openModal() {
   document.getElementById("dateModal").classList.remove("hidden");
 
@@ -24,15 +25,11 @@ function openModal() {
         new Date().setFullYear(new Date().getFullYear() + 1)
       ).toISOString(),
       onSelect: () => {
-        // Get selected dates as strings
         const [startDateStr, endDateStr] = window.datePicker.getDate();
 
         if (startDateStr && endDateStr) {
-          // Convert the strings to Date objects and update the selectedDates
           const startDate = new Date(startDateStr);
           const endDate = new Date(endDateStr);
-
-          // Trigger Vue reactivity by updating the reactive reference
           selectedDates.value = [startDate, endDate];
         } else {
           selectedDates.value = [null, null];
@@ -42,32 +39,50 @@ function openModal() {
   }
 }
 
-// Watch the selected dates to update the nights calculation
 watch(selectedDates, (newDates) => {
   if (newDates[0] && newDates[1]) {
-    // Calculate the number of nights whenever dates are selected
     const timeDiff = newDates[1].getTime() - newDates[0].getTime();
-    nights.value = timeDiff / (1000 * 3600 * 24); // Calculate nights based on time difference
+    nights.value = timeDiff / (1000 * 3600 * 24);
   } else {
     nights.value = 0;
   }
 });
 
-// Function to close the modal
 function closeModal() {
   document.getElementById("dateModal").classList.add("hidden");
 }
 
-// Function to confirm the dates and close the modal
 function confirmDates() {
   console.log("Selected Dates:", selectedDates.value);
   closeModal();
+  document.getElementById("guestFormModal").classList.remove("hidden");
 }
 
-// Computed property for total price based on the number of nights
 const totalPrice = computed(() => {
   return (nights.value * pricePerNight).toFixed(2);
 });
+
+function closeGuestFormModal() {
+  document.getElementById("guestFormModal").classList.add("hidden");
+}
+
+watch(numberOfGuests, (newCount) => {
+  guests.value = Array.from({ length: newCount }, () => ({
+    name: "",
+    surname: "",
+  }));
+});
+
+function submitGuestForm() {
+  console.log("Guest Info:", {
+    guests: guests.value,
+    selectedDates: selectedDates.value,
+    totalPrice: totalPrice.value,
+  });
+
+  closeGuestFormModal();
+  alert("Booking Confirmed!");
+}
 </script>
 
 <template>
@@ -148,6 +163,70 @@ const totalPrice = computed(() => {
           @click="confirmDates()"
         >
           Confirm
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="guestFormModal"
+      class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden"
+    >
+      <div class="bg-white text-black p-8 rounded-lg max-w-sm w-full relative">
+        <h2 class="text-xl font-bold mb-4 text-black">Guest Information</h2>
+
+        <form @submit.prevent="submitGuestForm">
+          <div class="mb-4">
+            <label for="numberOfGuests" class="block">Number of Guests</label>
+            <input
+              v-model="numberOfGuests"
+              id="numberOfGuests"
+              type="number"
+              min="1"
+              class="w-full border border-gray-300 p-2 rounded mb-4 text-black"
+              required
+            />
+          </div>
+
+          <!-- Dynamic Guest Fields -->
+          <div v-for="(guest, index) in guests" :key="index" class="mb-4">
+            <h3 class="font-bold">Guest {{ index + 1 }}</h3>
+            <div class="mb-2">
+              <label :for="'guestName' + index" class="block">First Name</label>
+              <input
+                v-model="guest.name"
+                :id="'guestName' + index"
+                type="text"
+                class="w-full border border-gray-300 p-2 rounded mb-4 text-black"
+                required
+              />
+            </div>
+            <div class="mb-2">
+              <label :for="'guestSurname' + index" class="block"
+                >Last Name</label
+              >
+              <input
+                v-model="guest.surname"
+                :id="'guestSurname' + index"
+                type="text"
+                class="w-full border border-gray-300 p-2 rounded mb-4 text-black"
+                required
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-primary-dark text-white py-2 rounded mt-4"
+          >
+            Submit
+          </button>
+        </form>
+
+        <button
+          @click="closeGuestFormModal()"
+          class="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+        >
+          &times;
         </button>
       </div>
     </div>
