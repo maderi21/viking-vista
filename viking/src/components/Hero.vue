@@ -1,8 +1,14 @@
 <script setup>
-import Icon from "./icons/Icon.vue";
+import { ref, computed, watch } from "vue";
 import Button from "./Button.vue";
 import Litepicker from "litepicker";
 
+// Reactive variables
+const pricePerNight = 49.99;
+const nights = ref(0); // To store the number of nights
+const selectedDates = ref([null, null]); // To store the selected dates
+
+// Function to open the date picker modal
 function openModal() {
   document.getElementById("dateModal").classList.remove("hidden");
 
@@ -17,31 +23,56 @@ function openModal() {
       maxDate: new Date(
         new Date().setFullYear(new Date().getFullYear() + 1)
       ).toISOString(),
-      onSelect: (date1, date2) => {
-        console.log("Selected Dates:", date1, date2);
+      onSelect: () => {
+        // Get selected dates as strings
+        const [startDateStr, endDateStr] = window.datePicker.getDate();
+
+        if (startDateStr && endDateStr) {
+          // Convert the strings to Date objects and update the selectedDates
+          const startDate = new Date(startDateStr);
+          const endDate = new Date(endDateStr);
+
+          // Trigger Vue reactivity by updating the reactive reference
+          selectedDates.value = [startDate, endDate];
+        } else {
+          selectedDates.value = [null, null];
+        }
       },
     });
   }
 }
 
-function getDateRange() {
-  return window.datePicker.getDate();
-}
+// Watch the selected dates to update the nights calculation
+watch(selectedDates, (newDates) => {
+  if (newDates[0] && newDates[1]) {
+    // Calculate the number of nights whenever dates are selected
+    const timeDiff = newDates[1].getTime() - newDates[0].getTime();
+    nights.value = timeDiff / (1000 * 3600 * 24); // Calculate nights based on time difference
+  } else {
+    nights.value = 0;
+  }
+});
 
+// Function to close the modal
 function closeModal() {
   document.getElementById("dateModal").classList.add("hidden");
 }
 
+// Function to confirm the dates and close the modal
 function confirmDates() {
-  const selectedDates = getDateRange();
-  console.log("Selected Dates:", selectedDates);
+  console.log("Selected Dates:", selectedDates.value);
   closeModal();
 }
+
+// Computed property for total price based on the number of nights
+const totalPrice = computed(() => {
+  return (nights.value * pricePerNight).toFixed(2);
+});
 </script>
 
 <template>
   <div
-    class="bg-hero text-white bg-cover bg-center h-[1350px] flex flex-col items-center rounded-b-3xl"
+    class="bg-hero text-white bg-cover bg-center h-[1100px] flex flex-col items-center rounded-b-3xl"
   >
     <div class="flex items-center flex-col mt-52">
       <h1 class="text-6xl mb-5">Your Adventure</h1>
@@ -76,20 +107,25 @@ function confirmDates() {
         </p>
       </div>
     </div>
-    <button class="mt-16" @click="openModal()">
-      <Button class="border border-primary-dark px-10 w-[300px]" BtnSize="large"
-        >Reserve Now</Button
+
+    <button class="mt-20" @click="openModal()">
+      <Button
+        class="border border-primary-dark px-10 w-[300px]"
+        BtnSize="large"
       >
+        Reserve Now
+      </Button>
     </button>
+
     <div
       id="dateModal"
       class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden"
     >
-      <div class="bg-white p-8 rounded-lg max-w-sm w-full relative">
+      <div class="bg-white text-black p-8 rounded-lg max-w-sm w-full relative">
         <h2 class="text-xl font-bold mb-4 text-black">
           Pick Reservation Dates
         </h2>
-
+        <p>Price for each night: 49.99 EUR</p>
         <input
           type="text"
           id="datePickerInput"
@@ -97,16 +133,18 @@ function confirmDates() {
           placeholder="Select dates"
           readonly
         />
-
+        <div class="mt-4">
+          <p class="font-medium text-lg">Number of Nights: {{ nights }}</p>
+          <p class="font-medium text-lg">Total Price: {{ totalPrice }} EUR</p>
+        </div>
         <button
           @click="closeModal()"
           class="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
         >
           &times;
         </button>
-
         <button
-          class="w-full bg-primary-dark text-white py-2 rounded"
+          class="w-full bg-primary-dark text-white py-2 rounded mt-4"
           @click="confirmDates()"
         >
           Confirm

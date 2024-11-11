@@ -6,6 +6,7 @@ import {
   signOut,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "../../firebase";
 import Icon from "../components/icons/Icon.vue";
 import { RouterLink } from "vue-router";
@@ -29,44 +30,63 @@ const closeAuthOnEsc = (event) => {
   }
 };
 
-const submit = () => {
+const submit = async () => {
   if (authType.value === "signup") {
-    createUserWithEmailAndPassword(auth, email.value, password.value)
-      .then(() => {
-        Toastify({
-          text: "Registration successful! Please log in.",
-          duration: 3000,
-          close: true,
-          gravity: "top",
-          position: "right",
-          backgroundColor: "#28a745",
-        }).showToast();
-        authType.value = "login";
-      })
-      .catch((error) => {
-        Toastify({
-          text: `Registration failed: ${error.message}`,
-          duration: 3000,
-          close: true,
-          gravity: "top",
-          position: "right",
-          backgroundColor: "#dc3545",
-        }).showToast();
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email.value,
+        password.value,
+        displayName.value
+      );
+      const user = userCredential.user;
+      console.log("User created:", user);
+      console.log("Name before updating profile:", name.value);
+
+      await updateProfile(user, { displayName: name.value });
+      user.reload().then(() => {
+        console.log("Profile reloaded");
       });
+      console.log("Profile updated with displayName:", user.displayName);
+
+      Toastify({
+        text: "Registration successful! Please log in.",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#28a745",
+      }).showToast();
+
+      authType.value = "login";
+    } catch (error) {
+      console.error("Error during registration or profile update:", error);
+      Toastify({
+        text: `Registration failed: ${error.message}`,
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#dc3545",
+      }).showToast();
+    }
   } else if (authType.value === "login") {
     signInWithEmailAndPassword(auth, email.value, password.value)
       .then((userCredential) => {
+        const user = userCredential.user;
+
+        name.value = user.displayName || "User";
+        localStorage.setItem("userName", name.value);
+
         Toastify({
-          text: "Login successful!",
+          text: `Login successful! Welcome, ${name.value}.`,
           duration: 3000,
           close: true,
           gravity: "top",
           position: "right",
           backgroundColor: "#28a745",
         }).showToast();
-        const user = userCredential.user;
-        name.value = user.displayName || "User";
-        localStorage.setItem("userName", name.value);
+
         showAuth.value = false;
       })
       .catch((error) => {
@@ -85,7 +105,14 @@ const submit = () => {
 const logout = () => {
   signOut(auth)
     .then(() => {
-      alert("Logged out successfully!");
+      Toastify({
+        text: "Logout successful!",
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#28a745",
+      }).showToast();
       isUserLoggedIn.value = false;
       name.value = "";
       localStorage.removeItem("userName");
@@ -101,7 +128,8 @@ onMounted(() => {
   onAuthStateChanged(auth, (user) => {
     isUserLoggedIn.value = !!user;
     if (user) {
-      name.value = localStorage.getItem("userName") || "User";
+      name.value = user.displayName || "User";
+      localStorage.setItem("userName", name.value);
     }
   });
 });
@@ -232,7 +260,7 @@ onBeforeUnmount(() => {
               >Name</label
             >
             <input
-              v-model="name"
+              v-model="displayName"
               type="text"
               id="name"
               class="w-full p-2 border border-gray-300 rounded text-black"

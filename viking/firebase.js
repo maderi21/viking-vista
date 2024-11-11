@@ -6,9 +6,9 @@ import {
   signOut,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-// Your Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyC562ZMyvM6qOFnhFRKyr5u7g2r9DfLm5w",
   authDomain: "viking-vista.firebaseapp.com",
@@ -19,16 +19,15 @@ const firebaseConfig = {
   measurementId: "G-S0HJKQKDLD",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const auth = getAuth(app); // Initialize Auth
+const auth = getAuth(app);
 
-// Export the necessary objects
 export {
   auth,
   createUserWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  updateProfile,
 };
