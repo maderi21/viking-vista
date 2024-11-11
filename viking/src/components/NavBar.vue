@@ -9,6 +9,7 @@ import {
 } from "../../firebase";
 import Icon from "../components/icons/Icon.vue";
 import { RouterLink } from "vue-router";
+import Toastify from "toastify-js";
 
 const showAuth = ref(false);
 const authType = ref("");
@@ -32,23 +33,51 @@ const submit = () => {
   if (authType.value === "signup") {
     createUserWithEmailAndPassword(auth, email.value, password.value)
       .then(() => {
+        Toastify({
+          text: "Registration successful! Please log in.",
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          backgroundColor: "#28a745",
+        }).showToast();
         authType.value = "login";
       })
       .catch((error) => {
-        const errorMessage = error.message;
-        alert(errorMessage);
+        Toastify({
+          text: `Registration failed: ${error.message}`,
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          backgroundColor: "#dc3545",
+        }).showToast();
       });
   } else if (authType.value === "login") {
     signInWithEmailAndPassword(auth, email.value, password.value)
       .then((userCredential) => {
+        Toastify({
+          text: "Login successful!",
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          backgroundColor: "#28a745",
+        }).showToast();
         const user = userCredential.user;
         name.value = user.displayName || "User";
         localStorage.setItem("userName", name.value);
         showAuth.value = false;
       })
       .catch((error) => {
-        const errorMessage = error.message;
-        alert(errorMessage);
+        Toastify({
+          text: `Login failed: ${error.message}`,
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          backgroundColor: "#dc3545",
+        }).showToast();
       });
   }
 };
