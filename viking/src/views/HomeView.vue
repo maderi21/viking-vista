@@ -3,7 +3,6 @@ import Accommodation from "./Accommodation.vue";
 import Hero from "../components/Hero.vue";
 import Experience from "./Experience.vue";
 import Gift from "./Gift.vue";
-import Reservations from "./Reservations.vue";
 import Activities from "./Activities.vue";
 import LogedIn from "./LogedIn.vue";
 </script>
@@ -22,9 +21,7 @@ import LogedIn from "./LogedIn.vue";
     <section id="gift">
       <Gift />
     </section>
-    <section id="reservations">
-      <Reservations />
-    </section>
+
     <section id="activities">
       <Activities />
     </section>

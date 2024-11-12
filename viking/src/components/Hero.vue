@@ -125,7 +125,7 @@ function submitGuestForm() {
 
     <button class="mt-20" @click="openModal()">
       <Button
-        class="border border-primary-dark px-10 w-[300px]"
+        class="border border-primary-dark px-10 w-[300px] hover:text-primary-dark"
         BtnSize="large"
       >
         Reserve Now

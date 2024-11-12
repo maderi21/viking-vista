@@ -93,11 +93,11 @@ import Button from "@/components/Button.vue";
             <div class="flex flex-col space-y-5 items-center mb-5">
               <input
                 placeholder="Email"
-                class="w-[300px] rounded-3xl px-6 py-3 text-lg"
+                class="w-[300px] rounded-3xl px-6 py-3 text-lg text-black"
               />
               <button>
                 <Button
-                  class="border border-primary-dark px-10 w-[300px]"
+                  class="border border-primary-dark px-10 w-[300px] hover:text-primary-dark"
                   BtnSize="large"
                   >Stay Connected</Button
                 >

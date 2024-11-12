@@ -49,7 +49,9 @@ const images = [
       </div>
     </div>
     <button class="mt-20">
-      <Button class="border border-primary-dark px-10" BtnSize="large"
+      <Button
+        class="border border-primary-dark px-10 hover:text-primary-dark"
+        BtnSize="large"
         >Reservations</Button
       >
     </button>
