@@ -4,7 +4,7 @@ import Hero from "../components/Hero.vue";
 import Experience from "./Experience.vue";
 import Gift from "./Gift.vue";
 import Reservations from "./Reservations.vue";
-import Activities from "../assets/pages/Activities.vue";
+import Activities from "./Activities.vue";
 import LogedIn from "./LogedIn.vue";
 </script>
 

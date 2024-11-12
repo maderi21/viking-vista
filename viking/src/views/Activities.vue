@@ -3,10 +3,10 @@ import Button from "@/components/Button.vue";
 </script>
 
 <template>
-  <div class="container mx-auto">
+  <div class="container mx-auto pt-20">
     <section id="hero">
       <div
-        class="bg-what bg-cover bg-center h-[1200px] items-center flex justify-center"
+        class="bg-what bg-cover bg-center h-[1200px] items-center flex justify-center rounded-md"
       >
         <h1 class="text-white text-6xl text-center">What to do here?</h1>
       </div>

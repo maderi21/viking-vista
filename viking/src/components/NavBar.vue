@@ -224,13 +224,13 @@ onBeforeUnmount(() => {
               <div v-if="!isUserLoggedIn">
                 <button
                   @click="toggleAuth('login')"
-                  class="border border-primary-dark rounded-3xl px-4 py-2 hover:bg-gray-200 mr-4"
+                  class="border border-primary-dark rounded-3xl px-4 py-2 mr-4 hover:text-primary-dark"
                 >
                   Login
                 </button>
                 <button
                   @click="toggleAuth('signup')"
-                  class="border border-primary-dark rounded-3xl px-4 py-2 hover:bg-gray-200"
+                  class="border border-primary-dark rounded-3xl px-4 py-2 hover:text-primary-dark"
                 >
                   Sign-up
                 </button>
