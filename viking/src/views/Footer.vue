@@ -23,11 +23,29 @@ defineProps({});
         </div>
       </div>
       <div class="flex flex-col items-end w-1/3 mr-40">
-        <a href="">facebook</a>
-        <a href="">twitter</a>
-        <a href="">instagram</a>
-        <a href="">youtube</a>
-        <p class="mt-2">kostolansky.marek@gmail.com</p>
+        <a
+          href="https://www.facebook.com/profile.php?id=1617340063"
+          class="hover:text-primary-dark"
+          target="_blank"
+          rel="noopener noreferrer"
+          >facebook</a
+        >
+        <a href="" class="hover:text-primary-dark">twitter</a>
+        <a
+          href="https://www.youtube.com/@DaniConnorWild"
+          class="hover:text-primary-dark"
+          target="_blank"
+          rel="noopener noreferrer"
+          >youtube</a
+        >
+        <a
+          href="mailto:kostolansky.marek@gmail.com"
+          class="hover:text-primary-dark"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          kostolansky.marek@gmail.com
+        </a>
       </div>
       <hr class="absolute bottom-4 left-20 right-20 border-t-2 border-white" />
     </div>
