@@ -176,23 +176,22 @@ onBeforeUnmount(() => {
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul
-            class="font-medium px-5 flex flex-col items-center p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0"
+            class="font-medium px-5 flex flex-row space-x-10 items-center p-4 md:p-0 mt-4 border rounded-lg md:mt-0 md:border-0"
           >
             <li>
               <a
                 href="#accommodation"
                 class="hover:underline hover:underline-offset-8 block hover:text-primary-dark py-2 px-3 rounded md:bg-transparent md:p-0"
               >
-                <Icon name="house" class="mr-3"> </Icon>ACCOMMODATION
+                <Icon name="house" class="mr-3"></Icon>ACCOMMODATION
               </a>
             </li>
-
             <li>
               <a
                 href="/#experience"
-                class="hover:underline hover:underline-offset-8 block py-2 px-3 mx-3 rounded hover:text-primary-dark hover:shadow-md md:border-0 md:p-0"
+                class="hover:underline hover:underline-offset-8 block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
               >
-                <Icon name="coffee" class="mr-3"> </Icon>EXPERIENCE
+                <Icon name="coffee" class="mr-3"></Icon>EXPERIENCE
               </a>
             </li>
             <li>
@@ -201,6 +200,14 @@ onBeforeUnmount(() => {
                 class="hover:underline hover:underline-offset-8 block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
               >
                 <Icon name="gift" class="mr-3"></Icon>GIFT
+              </a>
+            </li>
+            <li>
+              <a
+                href="/#activities"
+                class="hover:underline hover:underline-offset-8 block py-2 px-3 rounded md:hover:bg-transparent md:border-0 hover:text-primary-dark md:p-0"
+              >
+                <Icon name="vest-patches" class="mr-3"></Icon>ACTIVITIES
               </a>
             </li>
             <li>
