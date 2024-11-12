@@ -6,18 +6,18 @@ import Button from "@/components/Button.vue";
   <div class="container mx-auto pt-20">
     <section id="hero">
       <div
-        class="bg-what bg-cover bg-center h-[1200px] items-center flex justify-center rounded-md"
+        class="bg-what bg-cover bg-center h-[600px] items-center flex justify-center rounded-md"
       >
         <h1 class="text-white text-6xl text-center">What to do here?</h1>
       </div>
     </section>
-    <section id="sport" class="bg-primary-green">
-      <div class="flex items-center justify-center">
-        <h1 class="text-primary-dark text-6xl mt-20 mb-10">Sport</h1>
+    <section id="sport" class="bg-primary-#f7e7ce">
+      <div class="flex">
+        <h1 class="text-6xl mt-20 mb-10">Sport</h1>
       </div>
       <div class="flex h-[400px]">
         <div class="p-10 flex items-center w-1/2">
-          <p class="text-primary-dark text-2xl">
+          <p class="text-2xl">
             Experience an active retreat at our rental cabin! Explore scenic
             hiking trails, fish in the pristine lake, or enjoy swimming and
             kayaking nearby. For adventure seekers, there’s mountain biking and
@@ -32,8 +32,8 @@ import Button from "@/components/Button.vue";
         ></div>
       </div>
     </section>
-    <section id="trecking" class="bg-primary-dark">
-      <div class="flex items-center justify-center">
+    <section id="trecking" class="rounded-md">
+      <div class="flex justify-end">
         <h1 class="text-6xl mt-20 mb-10">Trekking</h1>
       </div>
       <div class="flex h-[400px]">
@@ -52,13 +52,13 @@ import Button from "@/components/Button.vue";
         </div>
       </div>
     </section>
-    <section id="swimming" class="bg-primary-green">
-      <div class="flex items-center justify-center">
-        <h1 class="text-primary-dark text-6xl mt-20 mb-10">Swimming</h1>
+    <section id="swimming" class="mb-10">
+      <div class="flex">
+        <h1 class="text-6xl mt-20 mb-10">Swimming</h1>
       </div>
       <div class="flex h-[400px]">
         <div class="p-10 flex items-center w-1/2">
-          <p class="text-primary-dark text-2xl">
+          <p class="text-2xl">
             Dive into adventure at our rental cabin with a pristine lake just
             steps away! Enjoy refreshing swims in crystal-clear waters
             surrounded by stunning natural beauty. Whether you prefer a morning
@@ -73,7 +73,7 @@ import Button from "@/components/Button.vue";
         ></div>
       </div>
     </section>
-    <section id="hook" class="bg-primary-green">
+    <section id="hook" class="bg-primary-green rounded-md">
       <div class="flex items-center justify-center"></div>
       <div class="flex justify-center items-center h-[400px]">
         <div
