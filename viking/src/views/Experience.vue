@@ -28,7 +28,9 @@ const images = [
 </script>
 
 <template>
-  <div class="w-full pt-28 mb-20 flex flex-col items-center justify-center">
+  <div
+    class="container mx-auto pt-28 mb-20 flex flex-col items-center justify-center"
+  >
     <div class="flex items-start">
       <h3 class="text-4xl mb-10">What Does it Look Like?</h3>
     </div>

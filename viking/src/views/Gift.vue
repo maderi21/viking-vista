@@ -4,7 +4,7 @@ defineProps({});
 
 <template>
   <div
-    class="bg-contact bg-cover bg-center flex justify-center items-center pt-28"
+    class="bg-contact bg-cover bg-center flex justify-center items-center pt-28 container mx-auto"
   >
     <div class="rounded-lg overflow-hidden h-max w-full mb-20 px-44">
       <iframe

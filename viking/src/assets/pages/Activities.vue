@@ -3,7 +3,7 @@ import Button from "@/components/Button.vue";
 </script>
 
 <template>
-  <div class="w-full">
+  <div class="container mx-auto">
     <section id="hero">
       <div
         class="bg-what bg-cover bg-center h-[1200px] items-center flex justify-center"

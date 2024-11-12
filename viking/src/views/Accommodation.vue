@@ -3,7 +3,7 @@ defineProps({});
 </script>
 
 <template>
-  <div class="w-full pt-20">
+  <div class="w-full pt-20 container mx-auto">
     <div class="flex justify-center">
       <div class="w-1/2 p-10 mt-10 ml-10">
         <h1 class="flex flex-row text-6xl font-semi-bold">

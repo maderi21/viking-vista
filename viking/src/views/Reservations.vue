@@ -12,9 +12,9 @@ const toggleSignupForm = () => {
 </script>
 
 <template>
-  <div>
+  <div class="container mx-auto">
     <div
-      class="bg-primary-green text-white flex justify-center items-center rounded-t-3xl"
+      class="bg-primary-green text-white flex justify-center items-center rounded-t-3xl container"
     >
       <div class="flex justify-center space-x-20 p-10 mt-10">
         <div class="w-[700px] text-center p-5">
