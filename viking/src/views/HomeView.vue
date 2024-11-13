@@ -21,12 +21,8 @@ import LogedIn from "./LogedIn.vue";
     <section id="gift">
       <Gift />
     </section>
-
     <section id="activities">
       <Activities />
-    </section>
-    <section id="logedin">
-      <LogedIn />
     </section>
   </main>
 </template>

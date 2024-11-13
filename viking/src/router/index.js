@@ -4,6 +4,7 @@ import Accommodation from "@/views/Accommodation.vue";
 import Gift from "@/views/Gift.vue";
 import Experience from "@/views/Experience.vue";
 import Activities from "@/views/Activities.vue";
+import LogedIn from "@/views/LogedIn.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: "/experience",
       name: "Experience",
       component: Experience,
+    },
+    {
+      path: "/logged-in",
+      name: "LogedIn",
+      component: LogedIn,
     },
   ],
 });

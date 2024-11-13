@@ -220,7 +220,6 @@ onBeforeUnmount(() => {
               </Button>
             </li>
             <li class="px-5 flex">
-              <!-- Conditionally render Login/Sign-up or Logout button -->
               <div v-if="!isUserLoggedIn">
                 <button
                   @click="toggleAuth('login')"
@@ -236,12 +235,14 @@ onBeforeUnmount(() => {
                 </button>
               </div>
               <div v-else class="flex flex-row items-center space-x-3">
-                <div
-                  class="flex items-center hover:underline hover:underline-offset-8 hover:text-primary-dark py-2 px-3 rounded md:bg-transparent md:p-0"
-                >
-                  <Icon name="user" class="mr-2"></Icon>
-                  <p>{{ name }}</p>
-                </div>
+                <router-link to="logged-in">
+                  <div
+                    class="flex items-center hover:underline hover:underline-offset-8 hover:text-primary-dark py-2 px-3 rounded md:bg-transparent md:p-0"
+                  >
+                    <Icon name="user" class="mr-2"></Icon>
+                    <p>{{ name }}</p>
+                  </div>
+                </router-link>
                 <button @click="logout" class="hover:text-primary-dark">
                   <Icon name="right-from-bracket" />
                 </button>
