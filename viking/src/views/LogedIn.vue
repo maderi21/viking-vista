@@ -16,8 +16,8 @@ const changeTab = (tabId) => {
 </script>
 
 <template>
-  <div class="min-h-screen">
-    <div class="p-6 font-sans container mx-auto h-auto">
+  <div class="min-h-autp container mx-auto">
+    <div class="p-6 font-sans container mx-auto">
       <h1 class="text-2xl font-bold mb-4">You are logged in.</h1>
 
       <div class="flex">

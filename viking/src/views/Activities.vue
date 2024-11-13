@@ -73,7 +73,7 @@ import Button from "@/components/Button.vue";
         ></div>
       </div>
     </section>
-    <section id="hook" class="bg-primary-green rounded-md">
+    <section id="hook" class="bg-primary-green rounded-t-md">
       <div class="flex items-center justify-center"></div>
       <div class="flex justify-center items-center h-[400px]">
         <div

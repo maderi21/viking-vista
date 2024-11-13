@@ -4,9 +4,17 @@ import Footer from "./views/Footer.vue";
 </script>
 
 <template>
-  <div class="max-w-10-[1024px] mx-auto">
+  <!-- Use flex and column layout for the full height container -->
+  <div class="min-h-screen flex flex-col max-w-10-[1024px] mx-auto">
+    <!-- NavBar stays at the top -->
     <NavBar />
-    <router-view />
+
+    <!-- Main content area -->
+    <div class="flex-grow">
+      <router-view />
+    </div>
+
+    <!-- Footer stays at the bottom -->
     <Footer />
   </div>
 </template>
