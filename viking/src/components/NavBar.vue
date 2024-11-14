@@ -18,6 +18,7 @@ const isUserLoggedIn = ref(false);
 const name = ref("");
 const email = ref("");
 const password = ref("");
+const displayName = ref("");
 
 const toggleAuth = (type) => {
   authType.value = type;
